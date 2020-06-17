@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.zwzx.managersystem.mapper.EmployeeMapper">
+
+    <select id="employeeList" resultType="top.zwzx.managersystem.pojo.Employee" useCache="true">
+       select * from employee;
+    </select>
+
+    <select id="quaryById" resultType="top.zwzx.managersystem.pojo.Employee" parameterType="int">
+       select * from employee where id = #{id};
+    </select>
+
+    <insert id="addEmployee" parameterType="top.zwzx.managersystem.pojo.Employee">
+        insert into employee(lastName,email,gender,birth,dep_id) values (#{lastName},#{email},#{gender},#{birth},#{dep_id});
+    </insert>
+
+    <delete id="deleteEmployee" parameterType="int">
+        delete from employee where id=#{id}
+    </delete>
+
+    <update id="updateEmployee" parameterType="top.zwzx.managersystem.pojo.Employee">
+        update employee set lastName=#{lastName},email=#{email},gender=#{gender},birth=#{birth},dep_id=#{dep_id}
+        where id=#{id}
+    </update>
+
+</mapper>
