@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginController {
 
-    @RequestMapping("/user/login")
+    @RequestMapping("/user/login1")
     public String login(
             @RequestParam("username") String username,
             @RequestParam("password") String password,
