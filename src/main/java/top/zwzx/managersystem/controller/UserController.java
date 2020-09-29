@@ -37,5 +37,10 @@ public class UserController {
             return "index";
         }
     }
+    @RequestMapping("/loginOut")
+    public String loginOut(HttpSession session){
+        session.removeAttribute("loginUser");
+        return "redirect:/";
+    }
 
 }
