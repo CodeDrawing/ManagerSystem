@@ -5,7 +5,7 @@
 <mapper namespace="top.zwzx.managersystem.mapper.StudentMapper">
 
     <select id="showAllStudent" resultType="top.zwzx.managersystem.pojo.Student">
-        select * from Student
+        select * from student s,parents p where  s.parentsId=p.parentsId
     </select>
 
 </mapper>

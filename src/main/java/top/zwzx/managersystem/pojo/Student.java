@@ -22,4 +22,8 @@ public class Student {
     private Date admissionTime;
     private String sex;
     private int restOfClass;
+    private String parentsName;
+    private String telephoneNumber;
+    private String relationshipWithStudent;
+
 }

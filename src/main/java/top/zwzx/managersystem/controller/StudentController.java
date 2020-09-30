@@ -27,9 +27,16 @@ public class StudentController {
     List<Student> students = iStudentService.showAllStudent();
     model.addAttribute("studentList",students);
     //返回到一个页面 显示所有学生信息
-    return "student/list";
-
+    return "crud/studentList";
 }
+@RequestMapping("/add")
+    public String add(){
+    return "crud/studentAdd";
+}
+@RequestMapping("/addStudent")
+    public String addStudnet(){
 
+    return "redirect:/student/showAllStudent";
+}
 
 }

@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import top.zwzx.managersystem.dao.DepartmentDao;
-import top.zwzx.managersystem.dao.EmployeeDao;
+
 import top.zwzx.managersystem.mapper.DepartmentMapper;
 import top.zwzx.managersystem.mapper.EmployeeMapper;
 import top.zwzx.managersystem.pojo.Department;
