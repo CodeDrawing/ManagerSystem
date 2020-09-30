@@ -21,4 +21,20 @@ public class StudentServiceImpl implements IStudentService {
         List<Student> students = studentMapper.showAllStudent();
         return students;
     }
+
+    @Override
+    public void addStudent(Student student) {
+        studentMapper.addStudent(student);
+    }
+
+    @Override
+    public int queryStudentId(Student student) {
+        int i = studentMapper.queryStudentId(student);
+        return i;
+    }
+
+    @Override
+    public void addStudentParents(Student student) {
+        studentMapper.addStudentParents(student);
+    }
 }

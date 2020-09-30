@@ -34,7 +34,7 @@ public class StudentController {
     return "crud/studentAdd";
 }
 @RequestMapping("/addStudent")
-    public String addStudnet(){
+    public String addStudnet(Student student){
 
     return "redirect:/student/showAllStudent";
 }

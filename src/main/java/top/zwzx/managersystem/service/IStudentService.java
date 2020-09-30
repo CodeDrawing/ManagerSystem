@@ -11,4 +11,8 @@ import java.util.List;
 public interface IStudentService {
     //查询所有学生信息
     public List<Student> showAllStudent();
+    public void addStudent(Student student);
+    public int queryStudentId(Student student);
+
+    public void addStudentParents(Student student);
 }
