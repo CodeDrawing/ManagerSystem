@@ -15,7 +15,7 @@ import java.util.List;
  * @Date 2020/9/29 23:04
  */
 @Controller
-@Repository("/class")
+@RequestMapping("/class")
 public class ClassController {
 
     @Autowired

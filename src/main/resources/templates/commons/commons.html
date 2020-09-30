@@ -8,7 +8,7 @@
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" th:href="@{/loginOut}">退出登陆</a>
+            <a class="nav-link" th:href="@{/user/loginOut}">退出登陆</a>
         </li>
     </ul>
 </nav>
@@ -57,13 +57,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">
+                <a class="nav-link" th:href="@{/salary/showAllSalary}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2">
                         <line x1="18" y1="20" x2="18" y2="10"></line>
                         <line x1="12" y1="20" x2="12" y2="4"></line>
                         <line x1="6" y1="20" x2="6" y2="14"></line>
                     </svg>
-                    Reports
+                    工资管理
                 </a>
             </li>
             <li class="nav-item">
