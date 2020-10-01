@@ -5,10 +5,13 @@
 <mapper namespace="top.zwzx.managersystem.mapper.StudentMapper">
 
     <select id="showAllStudent" resultType="top.zwzx.managersystem.pojo.Student">
-        select * from student s,parents p where  s.parentsId=p.parentsId
+        select  * from student s,parents p where  s.parentsId=p.parentsId
     </select>
     <select id="queryStudentId" resultType="java.lang.Integer" parameterType="top.zwzx.managersystem.pojo.Student">
         select  studentId from student where studentName=#{studentName} order by studentId desc
+    </select>
+    <select id="queryParentsId" resultType="java.lang.Integer" parameterType="top.zwzx.managersystem.pojo.Student">
+        select  parentsId from parents where parentsName=#{parentsName} order by parentsId desc
     </select>
 <insert  id="addStudent" parameterType="top.zwzx.managersystem.pojo.Student">
     insert into student(studentName,age,admissionTime,sex,restOfClass)
@@ -19,4 +22,7 @@
         insert into parents(parentsName,telephoneNumber,relationshipWithStudent,studentId)
         values(#{parentsName},#{telephoneNumber},#{relationshipWithStudent},#{studentId});
     </insert>
+    <update  id="addParentsStudent" parameterType="top.zwzx.managersystem.pojo.Student">
+        update student set parentsId=#{parentsId}
+    </update>
 </mapper>

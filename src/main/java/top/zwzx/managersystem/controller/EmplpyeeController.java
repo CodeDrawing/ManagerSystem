@@ -62,7 +62,6 @@ public class EmplpyeeController {
 
     @RequestMapping("/updateEmp/{id}")
     public String updateEmp(Employee employee){
-        System.out.println(employee);
         employeeMapper.updateEmployee(employee);
         return "redirect:/emps";
     }

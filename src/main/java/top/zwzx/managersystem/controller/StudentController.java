@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import top.zwzx.managersystem.pojo.Student;
 import top.zwzx.managersystem.service.IStudentService;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,6 +27,7 @@ public class StudentController {
     public String showAllStudent(Model model){
     List<Student> students = iStudentService.showAllStudent();
     model.addAttribute("studentList",students);
+    System.out.println(students);
     //返回到一个页面 显示所有学生信息
     return "crud/studentList";
 }
@@ -35,7 +37,15 @@ public class StudentController {
 }
 @RequestMapping("/addStudent")
     public String addStudnet(Student student){
-
+    student.setAdmissionTime(new Date());
+    iStudentService.addStudent(student);
+    int i = iStudentService.queryStudentId(student);
+    System.out.println(i);
+    student.setStudentId(i);
+    iStudentService.addStudentParents(student);
+    int i1 = iStudentService.queryParentsId(student);
+    student.setParentsId(i1);
+    iStudentService.addParentsStudent(student);
     return "redirect:/student/showAllStudent";
 }
 

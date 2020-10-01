@@ -18,4 +18,7 @@ public class classClass {
     private String className;
     private String classRoom;
     private Date classTime;
+    private Integer countStudent;
+    private Integer teacherId;
+    private String teacherName;
 }

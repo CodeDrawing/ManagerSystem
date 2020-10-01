@@ -34,6 +34,17 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
+    public int queryParentsId(Student student) {
+        int i = studentMapper.queryParentsId(student);
+        return i;
+    }
+
+    @Override
+    public void addParentsStudent(Student student) {
+        studentMapper.addParentsStudent(student);
+    }
+
+    @Override
     public void addStudentParents(Student student) {
         studentMapper.addStudentParents(student);
     }

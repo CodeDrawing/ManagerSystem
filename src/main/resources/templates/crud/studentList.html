@@ -71,19 +71,19 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="studentList:${studentList}">
-									<td th:text="${studentList.getStudentId()}"></td>
-									<td>[[${studentList.getStudentName()}]]</td>
-									<td>[[${studentList.getAge()}]]</td>
-									<td>[[${studentList.getSex()}]]</td>
-									<td>[[${#dates.format(studentList.getAdmissionTime(),'yyyy-MM-dd HH:mm:ss')}]]</td>
-									<td>[[${studentList.getRestOfClass()}]]</td>
-									<td>[[${studentList.getParentsName()}]]</td>
-									<td>[[${studentList.getTelephoneNumber()}]]</td>
-									<td>[[${studentList.getRelationshipWithStudent()}]]</td>
+								<tr th:each="student:${studentList}">
+									<td th:text="${student.getStudentId()}"></td>
+									<td>[[${student.getStudentName()}]]</td>
+									<td>[[${student.getAge()}]]</td>
+									<td>[[${student.getSex()}]]</td>
+									<td>[[${#dates.format(student.getAdmissionTime(),'yyyy-MM-dd HH:mm:ss')}]]</td>
+									<td>[[${student.getRestOfClass()}]]</td>
+									<td>[[${student.getParentsName()}]]</td>
+									<td>[[${student.getTelephoneNumber()}]]</td>
+									<td>[[${student.getRelationshipWithStudent()}]]</td>
 									<td>
-										<a class="btn btn-sm btn-primary" th:href="@{/student/}+${studentList.getStudentId()}">编辑</a>
-										<a class="btn btn-sm btn-danger" th:href="@{/student/}+${studentList.getStudentId()}">删除</a>
+										<a class="btn btn-sm btn-primary" th:href="@{/student/}+${student.getStudentId()}">编辑</a>
+										<a class="btn btn-sm btn-danger" th:href="@{/student/}+${student.getStudentId()}">删除</a>
 									</td>
 								</tr>
 							</tbody>

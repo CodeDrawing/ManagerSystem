@@ -16,14 +16,16 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Student {
-    private int studentId;
+    private Integer studentId;
     private String studentName;
-    private int age;
+    private Integer age;
     private Date admissionTime;
     private String sex;
-    private int restOfClass;
+    private Integer restOfClass;
     private String parentsName;
     private String telephoneNumber;
     private String relationshipWithStudent;
+    private Integer parentsId;
+    private Integer classId;
 
 }

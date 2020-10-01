@@ -20,5 +20,5 @@ public class Salary {
     private String datatime;//年月
     private Integer issue;//是否发放过工资
     private String teacherName;
-
+    private Integer teacherId;
 }
