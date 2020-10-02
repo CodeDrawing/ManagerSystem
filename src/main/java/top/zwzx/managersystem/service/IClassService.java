@@ -19,4 +19,7 @@ public interface IClassService {
     public List<Student> queryStudent(int id);
     public List<Teacher> queryTeacherInfo(int id);
     public void addStudentToClass(Student student);
+    public classClass showOneClass(Integer id);
+    public void updateClass(classClass classClass);
+
 }

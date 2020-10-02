@@ -22,10 +22,7 @@ public class StudentServiceImpl implements IStudentService {
         return students;
     }
 
-    @Override
-    public void addStudent(Student student) {
-        studentMapper.addStudent(student);
-    }
+
 
     @Override
     public int queryStudentId(Student student) {
@@ -34,18 +31,11 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public int queryParentsId(Student student) {
-        int i = studentMapper.queryParentsId(student);
-        return i;
+    public void addStudent(Student student) {
+        studentMapper.addStudent(student);
     }
 
-    @Override
-    public void addParentsStudent(Student student) {
-        studentMapper.addParentsStudent(student);
-    }
 
-    @Override
-    public void addStudentParents(Student student) {
-        studentMapper.addStudentParents(student);
-    }
+
+
 }

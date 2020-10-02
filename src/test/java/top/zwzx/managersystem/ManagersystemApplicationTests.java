@@ -37,7 +37,6 @@ class ManagersystemApplicationTests {
         int i = iStudentService.queryStudentId(student);
         System.out.println(i);
         student.setStudentId(i);
-        iStudentService.addStudentParents(student);
     }
     @Test
     void text2(){
@@ -45,6 +44,19 @@ class ManagersystemApplicationTests {
         student.setStudentName("张三");
         int i = iStudentService.queryStudentId(student);
         System.out.println(i);
+    }
+    @Test
+    void text3(){
+        Student student = new Student();
+        student.setAdmissionTime(new Date());
+        student.setAge(20);
+        student.setParentsName("赵兴");
+        student.setRelationshipWithStudent("父");
+        student.setRestOfClass(20);
+        student.setSex("男");
+        student.setStudentName("张薇");
+        student.setTelephoneNumber("1231241231");
+        iStudentService.addStudent(student);
     }
 
 }

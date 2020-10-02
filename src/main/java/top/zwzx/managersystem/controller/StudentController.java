@@ -38,14 +38,7 @@ public class StudentController {
 @RequestMapping("/addStudent")
     public String addStudnet(Student student){
     student.setAdmissionTime(new Date());
-    iStudentService.addStudent(student);
-    int i = iStudentService.queryStudentId(student);
-    System.out.println(i);
-    student.setStudentId(i);
-    iStudentService.addStudentParents(student);
-    int i1 = iStudentService.queryParentsId(student);
-    student.setParentsId(i1);
-    iStudentService.addParentsStudent(student);
+        iStudentService.addStudent(student);
     return "redirect:/student/showAllStudent";
 }
 

@@ -59,5 +59,16 @@ public class ClassServiceImpl implements IClassService {
         classMapper.addStudentToClass(student);
     }
 
+    @Override
+    public classClass showOneClass(Integer id) {
+        classClass classClasses = classMapper.showOneClass(id);
+        return classClasses;
+    }
+
+    @Override
+    public void updateClass(classClass classClass) {
+        classMapper.updateClass(classClass);
+    }
+
 
 }

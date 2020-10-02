@@ -50,7 +50,7 @@
 		<div class="container-fluid">
 			<div class="row">
 
-				<div th:replace="~{commons/commons::sidebar(active='list.html')}"></div>
+				<div th:replace="~{commons/commons::sidebar(active='classList.html')}"></div>
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 					<h2><a class="btn btn-sm btn-success" th:href="@{/class/add}">添加课程</a></h2>
@@ -74,7 +74,7 @@
 									<td>[[${#dates.format(classList.getClassTime(),'yyyy-MM-dd HH:mm:ss')}]]</td>
 									<td>[[${classList.getTeacherName()}]]</td>
 									<td>
-										<a class="btn btn-sm btn-primary" th:href="@{/class/}+${classList.getClassId()}">编辑</a>
+										<a class="btn btn-sm btn-primary" th:href="@{/class/toUpdateClass/}+${classList.getClassId()}">编辑</a>
 										<a class="btn btn-sm btn-danger" th:href="@{/class/}+${classList.getClassId()}">删除</a>
 									</td>
 								</tr>

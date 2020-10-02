@@ -72,4 +72,27 @@ public class ClassController {
 
     }
 
+//    @RequestMapping("/updateClass/{id}")
+//    public String updateClass(@PathVariable("id") Integer id,Model model){
+//        List<Teacher> teachers = iClassService.queryTeacherInfo(id);
+//        model.addAttribute("teacherList",teachers);
+//        return "redirect:/class/showAllClass";
+//
+//    }
+
+    @RequestMapping("/toUpdateClass/{id}")
+    public String toAddClass(@PathVariable("id") Integer id,Model model){
+        classClass classClasses = iClassService.showOneClass(id);
+        model.addAttribute("class",classClasses);
+        List<Teacher> teachers = iTeacherService.showAllTeacher();
+        System.out.println(teachers);
+        model.addAttribute("teacherList",teachers);
+        return "crud/updateClass";
+    }
+
+    @RequestMapping("/updateClass")
+    public String updateClass(classClass classClass){
+        iClassService.updateClass(classClass);
+        return "redirect:/class/showAllClass";
+    }
 }
