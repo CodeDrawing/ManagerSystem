@@ -12,11 +12,11 @@
     </select>
 
 
-
     <insert  id="addStudent" parameterType="top.zwzx.managersystem.pojo.Student">
         insert into student(studentName,age,admissionTime,sex,restOfClass,parentsName,telephoneNumber,relationshipWithStudent)
         values (#{studentName},#{age},#{admissionTime},#{sex},#{restOfClass},#{parentsName},#{telephoneNumber},#{relationshipWithStudent});
     </insert>
-
-
+    <delete id="dropStudent" parameterType="java.lang.Integer">
+        delete from student where studentId=#{id}
+    </delete>
 </mapper>

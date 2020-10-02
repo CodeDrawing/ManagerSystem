@@ -22,4 +22,27 @@ public class TeacherServiceImpl implements ITeacherService {
         List<Teacher> teachers = teacherMapper.showAllTeacher();
         return teachers;
     }
+
+    @Override
+    public void addTeacher(Teacher teacher) {
+        teacherMapper.addTeacher(teacher);
+    }
+
+    @Override
+    public void dropTeacher(int id) {
+        teacherMapper.dropTeacher(id);
+    }
+
+    @Override
+    public Teacher queryOneTeacher(Integer id) {
+        Teacher teacher1 = teacherMapper.queryOneTeacher(id);
+        return teacher1;
+    }
+
+    @Override
+    public void updateTeacher(Teacher teacher) {
+        teacherMapper.updateTeacher(teacher);
+    }
+
+
 }

@@ -7,5 +7,18 @@
     <select id="showAllTeacher" resultType="top.zwzx.managersystem.pojo.Teacher">
         select * from teacher
     </select>
-
+    <insert id="addTeacher" parameterType="top.zwzx.managersystem.pojo.Teacher">
+        insert into teacher(teacherName,position,comeTime,telephoneNumber) values
+        (#{teacherName},#{position},#{comeTime},#{telephoneNumber})
+    </insert>
+    <delete id="dropTeacher" parameterType="java.lang.Integer">
+        delete from teacher where teacherId=#{id}
+    </delete>
+    <select id="queryOneTeacher" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.Teacher">
+        select * from teacher where teacherId=#{id}
+    </select>
+    <update id="updateTeacher" parameterType="top.zwzx.managersystem.pojo.Teacher" >
+        update  teacher set teacherName=#{teacherName},position=#{position},comeTime=#{comeTime},telephoneNumber=#{telephoneNumber}
+        where teacherId=#{teacherId}
+    </update>
 </mapper>

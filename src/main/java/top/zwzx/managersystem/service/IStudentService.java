@@ -14,6 +14,7 @@ public interface IStudentService {
     public List<Student> showAllStudent();
     public int queryStudentId(Student student);
     public void addStudent(Student student);
+    public void dropStudent(Integer id);
 
 
 }

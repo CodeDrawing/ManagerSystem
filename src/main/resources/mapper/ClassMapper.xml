@@ -40,4 +40,7 @@ select * from class c,teacher t where c.teacherId=t.teacherId and c.classId=#{id
     <update id="updateClass" parameterType="top.zwzx.managersystem.pojo.classClass">
         update class set className=#{className} , classRoom=#{classRoom},classTime=#{classTime},teacherId=#{teacherId} where classId=#{classId}
     </update>
+    <delete id="dropClass" parameterType="java.lang.Integer">
+        delete from class where classId=#{id}
+    </delete>
 </mapper>

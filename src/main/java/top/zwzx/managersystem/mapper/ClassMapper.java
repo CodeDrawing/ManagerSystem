@@ -27,4 +27,5 @@ public interface ClassMapper {
     public List<classClass> queryAllTeacherName();
     public classClass showOneClass(Integer id);
     public void updateClass(classClass classClass);
+    public void dropClass(int id);
 }

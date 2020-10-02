@@ -21,5 +21,5 @@ public interface IClassService {
     public void addStudentToClass(Student student);
     public classClass showOneClass(Integer id);
     public void updateClass(classClass classClass);
-
+    public void dropClass(int id);
 }

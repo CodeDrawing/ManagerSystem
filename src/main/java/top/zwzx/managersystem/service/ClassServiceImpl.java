@@ -70,5 +70,10 @@ public class ClassServiceImpl implements IClassService {
         classMapper.updateClass(classClass);
     }
 
+    @Override
+    public void dropClass(int id) {
+        classMapper.dropClass(id);
+    }
+
 
 }

@@ -13,7 +13,9 @@ import java.util.List;
 @Mapper
 @Repository
 public interface TeacherMapper {
-
      public List<Teacher> showAllTeacher();
-    
+     public void addTeacher(Teacher teacher);
+     public void dropTeacher(int id);
+     public Teacher queryOneTeacher(Integer id);
+     public void updateTeacher(Teacher teacher);
 }

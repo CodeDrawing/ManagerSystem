@@ -20,5 +20,5 @@ public interface StudentMapper {
     public int queryStudentId(Student student);
     public void addStudent(Student student);
 //    public void addParentsStudent(Student student);//添加student表里的parentsId
-
+    public void dropStudent(Integer id);
 }

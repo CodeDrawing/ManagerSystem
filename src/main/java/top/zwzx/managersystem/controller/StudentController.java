@@ -4,6 +4,7 @@ import ch.qos.logback.classic.spi.EventArgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import top.zwzx.managersystem.pojo.Student;
 import top.zwzx.managersystem.service.IStudentService;
@@ -22,24 +23,32 @@ public class StudentController {
     IStudentService iStudentService;
 
 
-//    显示所有学生信息
-@RequestMapping("/showAllStudent")
-    public String showAllStudent(Model model){
-    List<Student> students = iStudentService.showAllStudent();
-    model.addAttribute("studentList",students);
-    System.out.println(students);
-    //返回到一个页面 显示所有学生信息
-    return "crud/studentList";
-}
-@RequestMapping("/add")
-    public String add(){
-    return "crud/studentAdd";
-}
-@RequestMapping("/addStudent")
-    public String addStudnet(Student student){
-    student.setAdmissionTime(new Date());
+    //    显示所有学生信息
+    @RequestMapping("/showAllStudent")
+    public String showAllStudent(Model model) {
+        List<Student> students = iStudentService.showAllStudent();
+        model.addAttribute("studentList", students);
+        System.out.println(students);
+        //返回到一个页面 显示所有学生信息
+        return "crud/studentList";
+    }
+
+    @RequestMapping("/add")
+    public String add() {
+        return "crud/studentAdd";
+    }
+
+    @RequestMapping("/addStudent")
+    public String addStudnet(Student student) {
+        student.setAdmissionTime(new Date());
         iStudentService.addStudent(student);
-    return "redirect:/student/showAllStudent";
-}
+        return "redirect:/student/showAllStudent";
+    }
+    @RequestMapping("/dropStudent/{id}")
+    public String dropStudent(@PathVariable("id")Integer id){
+        System.out.println(id);
+        iStudentService.dropStudent(id);
+        return "redirect:/student/showAllStudent";
+    }
 
 }

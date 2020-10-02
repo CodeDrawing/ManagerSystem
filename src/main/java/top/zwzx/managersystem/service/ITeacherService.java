@@ -10,5 +10,8 @@ import java.util.List;
  */
 public interface ITeacherService {
     public List<Teacher> showAllTeacher();
-
+    public void addTeacher( Teacher teacher);
+    public void dropTeacher(int id);
+    public Teacher queryOneTeacher(Integer id);
+    public void updateTeacher(Teacher teacher);
 }

@@ -53,7 +53,7 @@
 				<div th:replace="~{commons/commons::sidebar(active='teacherList.html')}"></div>
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-					<h2><a class="btn btn-sm btn-success" th:href="@{/emp}">添加教师</a></h2>
+					<h2><a class="btn btn-sm btn-success" th:href="@{/teacher/toAddTeacher}">添加教师</a></h2>
 					<div class="table-responsive">
 						<table class="table table-striped table-sm">
 							<thead>
@@ -71,11 +71,11 @@
 									<td th:text="${teacherList.getTeacherId()}"></td>
 									<td>[[${teacherList.getTeacherName()}]]</td>
 									<td>[[${teacherList.getPosition()}]]</td>
-									<td>[[${teacherList.getTelephoneNumber()}]]</td>
 									<td>[[${#dates.format(teacherList.getComeTime(),'yyyy-MM-dd HH:mm:ss')}]]</td>
+									<td>[[${teacherList.getTelephoneNumber()}]]</td>
 									<td>
-										<a class="btn btn-sm btn-primary" th:href="@{/teacher/}+${teacherList.getTeacherId()}">编辑</a>
-										<a class="btn btn-sm btn-danger" th:href="@{/teacher/}+${teacherList.getTeacherId()}">删除</a>
+										<a class="btn btn-sm btn-primary" th:href="@{/teacher/toUpdateTeacher/}+${teacherList.getTeacherId()}">编辑</a>
+										<a class="btn btn-sm btn-danger" th:href="@{/teacher/dropTeacher/}+${teacherList.getTeacherId()}">删除</a>
 									</td>
 								</tr>
 							</tbody>
