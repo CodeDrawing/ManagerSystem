@@ -95,4 +95,11 @@ public class ClassController {
         iClassService.updateClass(classClass);
         return "redirect:/class/showAllClass";
     }
+
+    //删除记录
+    @RequestMapping("/dropClass/{id}")
+    public String dropClass(@PathVariable("id")Integer id){
+        iClassService.dropClass(id);
+        return "redirect:/class/showAllClass";
+    }
 }
