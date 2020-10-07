@@ -82,7 +82,7 @@
 									<td>[[${student.getTelephoneNumber()}]]</td>
 									<td>[[${student.getRelationshipWithStudent()}]]</td>
 									<td>
-										<a class="btn btn-sm btn-primary" th:href="@{/student/}+${student.getStudentId()}">编辑</a>
+										<a class="btn btn-sm btn-primary" th:href="@{/student/toUpdateStudent/}+${student.getStudentId()}">编辑</a>
 										<a class="btn btn-sm btn-danger" th:href="@{/student/dropStudent/}+${student.getStudentId()}">删除</a>
 									</td>
 								</tr>

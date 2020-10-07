@@ -22,4 +22,28 @@ public class SalaryServiceImpl implements ISalaryService {
         List<Salary> salaries = salaryMapper.showAllSalary();
         return salaries;
     }
+
+    @Override
+    public void salaryAdd(Salary salary) {
+        salary.setRealWages(salary.getBaseSalary()+salary.getClassMoney()+salary.getCommission()-salary.getLeaveDays()*50-salary.getDeductions());
+        salaryMapper.salaryAdd(salary);
+    }
+
+    @Override
+    public Salary toSalaryUpdate(Integer id) {
+        Salary salary = salaryMapper.toSalaryUpdate(id);
+        return salary;
+    }
+
+    @Override
+    public void salaryUpdate(Salary salary) {
+        salaryMapper.salaryUpdate(salary);
+    }
+
+    @Override
+    public void dropSalary(Integer id) {
+        salaryMapper.dropSalary(id);
+    }
+
+
 }

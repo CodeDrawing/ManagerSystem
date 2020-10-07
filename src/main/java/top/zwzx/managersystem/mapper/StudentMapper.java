@@ -21,4 +21,6 @@ public interface StudentMapper {
     public void addStudent(Student student);
 //    public void addParentsStudent(Student student);//添加student表里的parentsId
     public void dropStudent(Integer id);
+    public Student updateStudent(Student student);
+    public Student showOneStudent(Integer id);
 }

@@ -19,4 +19,12 @@
     <delete id="dropStudent" parameterType="java.lang.Integer">
         delete from student where studentId=#{id}
     </delete>
+    <update id="updateStudent" parameterType="top.zwzx.managersystem.pojo.Student">
+        update student set studentName=#{studentName},age=#{age},admissionTime=#{admissionTime},
+        sex=#{sex},restOfClass=#{restOfClass},parentsName=#{parentsName},telephoneNumber=#{telephoneNumber},relationshipWithStudent=#{relationshipWithStudent}
+        where studentId=#{studentId}
+    </update>
+    <select id="showOneStudent" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.Student">
+        select * from student where studentId=#{id}
+    </select>
 </mapper>

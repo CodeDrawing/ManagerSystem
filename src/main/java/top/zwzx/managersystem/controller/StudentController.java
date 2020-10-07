@@ -50,5 +50,16 @@ public class StudentController {
         iStudentService.dropStudent(id);
         return "redirect:/student/showAllStudent";
     }
+    @RequestMapping("/toUpdateStudent/{id}")
+    public String toUpdateStudent(@PathVariable("id") Integer id,Model model){
+        Student student = iStudentService.showOneStudent(id);
+        model.addAttribute("student",student);
+        return "crud/updateStudent";
+    }
 
+    @RequestMapping("/updateStudent")
+    public String updateStudent(Student student){
+        iStudentService.updateStudent(student);
+        return "redirect:/student/showAllStudent";
+    }
 }

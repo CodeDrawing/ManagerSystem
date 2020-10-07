@@ -40,4 +40,16 @@ public class StudentServiceImpl implements IStudentService {
         studentMapper.dropStudent(id);
     }
 
+    @Override
+    public Student updateStudent(Student student) {
+        Student student1 = studentMapper.updateStudent(student);
+        return student1;
+    }
+
+    @Override
+    public Student showOneStudent(Integer id) {
+        Student student = studentMapper.showOneStudent(id);
+        return student;
+    }
+
 }

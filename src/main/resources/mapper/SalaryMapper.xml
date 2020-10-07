@@ -6,7 +6,20 @@
 <mapper namespace="top.zwzx.managersystem.mapper.SalaryMapper">
 
 <select id="showAllSalary" resultType="top.zwzx.managersystem.pojo.Salary">
-    select * from salary s,teacher t where s.teacherId=t.teacherId
+    select * from salary
 </select>
-
+<insert id="salaryAdd" parameterType="top.zwzx.managersystem.pojo.Salary">
+    insert into salary (teacherName,baseSalary,classMoney,commission,leaveDays,deductions,dateTime,issue)
+    values (#{teacherName},#{baseSalary},#{classMoney},#{commission},#{leaveDays},#{deductions},#{dateTime},#{issue})
+</insert>
+    <select id="toSalaryUpdate" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.Salary">
+        select * from salary where salaryId=#{id}
+    </select>
+    <update id="salaryUpdate" parameterType="top.zwzx.managersystem.pojo.Salary">
+        update salary set teacherName=#{teacherName},baseSalary=#{baseSalary},classMoney=#{classMoney},commission=#{commission},leaveDays=#{leaveDays},deductions=#{deductions},dateTime=#{dateTime},issue=#{issue}
+        where salaryId=#{salaryId}
+    </update>
+    <delete id="dropSalary" parameterType="java.lang.Integer">
+        delete from salary where salaryId=#{id}
+    </delete>
 </mapper>

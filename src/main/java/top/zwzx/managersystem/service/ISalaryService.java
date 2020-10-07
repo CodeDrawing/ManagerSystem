@@ -10,4 +10,9 @@ import java.util.List;
  **/
 public interface ISalaryService {
     public List<Salary> showAllSalary();
+    public void salaryAdd(Salary salary);
+    public Salary  toSalaryUpdate(Integer id);
+    public void salaryUpdate(Salary salary);
+    public void dropSalary(Integer id);
+
 }
