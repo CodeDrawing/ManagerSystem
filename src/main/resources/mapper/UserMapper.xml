@@ -6,5 +6,8 @@
 <select id="loginIn" resultType="top.zwzx.managersystem.pojo.User" parameterType="top.zwzx.managersystem.pojo.User">
     select * from user where userName=#{userName} and password=#{password}
 </select>
+    <select id="queryPermission" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select permission from user where userName=#{name}
+    </select>
 
 </mapper>

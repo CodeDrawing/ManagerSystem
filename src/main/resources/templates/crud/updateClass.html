@@ -59,23 +59,23 @@
                 <input type="hidden" name="classId" th:value="${class.getClassId()}">
             <div class="form-group">
                 <label>课程名</label>
-                <input type="text" class="form-control" placeholder="" name="className" th:value="${class.getClassName()}">
+                <input type="text" class="form-control" placeholder=""style="width: 35%" name="className" th:value="${class.getClassName()}">
             </div>
             <div class="form-group">
                 <label>上课教室</label>
-                <input type="text" class="form-control" placeholder="" name="classRoom" th:value="${class.getClassRoom()}">
+                <input type="text" class="form-control" placeholder=""style="width: 35%" name="classRoom" th:value="${class.getClassRoom()}">
             </div>
             <div class="form-group">
                 <label>上课时间</label>
-                <input type="text" class="form-control" placeholder="" name="classTime" th:value="${#dates.format(class.getClassTime(),'yyyy-MM-dd HH:mm:ss')}">
+                <input type="date" class="form-control" placeholder=""style="width: 35%" name="classTime" th:value="${#dates.format(class.getClassTime(),'yyyy-MM-dd')}">
             </div>
             <div class="form-group">
-                <label>上课教师</label>
-                <select class="form-control" name="teacherId" style="width:30%">
+                <label>上课老师</label>
+                <select class="form-control" name="teacherId" style="width:35%">
                     <option th:each="teacher:${teacherList}" th:text="${teacher.getTeacherName()}" th:value="${teacher.getTeacherId()}"></option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">提交</button>
+            <button type="submit" class="btn btn-primary" style="margin-left: 31%">提交</button>
             </form>
         </main>
     </div>

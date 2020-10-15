@@ -31,6 +31,8 @@ public class UserController {
         List<User> users = iUserService.loginIn(user);
         if(users.size()==1){
             httpSession.setAttribute("loginUser",username);
+            int i = iUserService.queryPermission(username);
+            httpSession.setAttribute("permission",i);
             return "redirect:/main.html";
         }else{
             model.addAttribute("msg","用户名或密码错误，请重试");

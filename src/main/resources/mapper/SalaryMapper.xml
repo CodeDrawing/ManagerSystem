@@ -9,8 +9,8 @@
     select * from salary
 </select>
 <insert id="salaryAdd" parameterType="top.zwzx.managersystem.pojo.Salary">
-    insert into salary (teacherName,baseSalary,classMoney,commission,leaveDays,deductions,dateTime,issue)
-    values (#{teacherName},#{baseSalary},#{classMoney},#{commission},#{leaveDays},#{deductions},#{dateTime},#{issue})
+    insert into salary (teacherName,baseSalary,classMoney,commission,leaveDays,deductions,dateTime,issue,realWages)
+    values (#{teacherName},#{baseSalary},#{classMoney},#{commission},#{leaveDays},#{deductions},#{dateTime},#{issue},#{realWages})
 </insert>
     <select id="toSalaryUpdate" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.Salary">
         select * from salary where salaryId=#{id}

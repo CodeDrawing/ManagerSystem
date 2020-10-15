@@ -82,7 +82,7 @@
 									<td>[[${salaryList.getIssue()==1?"是":"否"}]]</td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/salary/toSalaryUpdate/}+${salaryList.getSalaryId()}">编辑</a>
-										<a class="btn btn-sm btn-danger" th:href="@{/salary/dropSalary/}+${salaryList.getSalaryId()}">删除</a>
+										<a class="btn btn-sm btn-danger"onclick="javascript:return drop();" th:href="@{/salary/dropSalary/}+${salaryList.getSalaryId()}">删除</a>
 									</td>
 								</tr>
 							</tbody>
@@ -107,35 +107,15 @@
 
 		<!-- Graphs -->
 		<script type="text/javascript" src="/js/Chart.min.js"></script>
-		<script>
-			var ctx = document.getElementById("myChart");
-			var myChart = new Chart(ctx, {
-				type: 'line',
-				data: {
-					labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-					datasets: [{
-						data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-						lineTension: 0,
-						backgroundColor: 'transparent',
-						borderColor: '#007bff',
-						borderWidth: 4,
-						pointBackgroundColor: '#007bff'
-					}]
-				},
-				options: {
-					scales: {
-						yAxes: [{
-							ticks: {
-								beginAtZero: false
-							}
-						}]
-					},
-					legend: {
-						display: false,
-					}
-				}
-			});
-		</script>
+	<script>
+		function drop(){
+			if(confirm("确认要删除该记录吗?这将无法撤销!")){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	</script>
 
 	</body>
 

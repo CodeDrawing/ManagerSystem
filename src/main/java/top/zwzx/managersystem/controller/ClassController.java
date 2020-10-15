@@ -61,14 +61,14 @@ public class ClassController {
         model.addAttribute("id",id);
         model.addAttribute("teacherName",teacherName);
         model.addAttribute("studentList",students);
+        model.addAttribute("classId",id);
         return "crud/classStudentList";
     }
     @RequestMapping("/addStudentToClass/{classId}")
     public String addStudentToClass(@PathVariable("classId") Integer classId,Student student){
         student.setClassId(classId);
-        System.out.println(student);
         iClassService.addStudentToClass(student);
-        return "redirect:/class/showAllClass";
+        return "redirect:/class/queryStudent/"+classId;
 
     }
 
@@ -101,5 +101,17 @@ public class ClassController {
     public String dropClass(@PathVariable("id")Integer id){
         iClassService.dropClass(id);
         return "redirect:/class/showAllClass";
+    }
+    //删除该课程的学生
+    @RequestMapping("/dropStudentOfClass/{cId}/{sId}")
+    public String dropStudentOfClass(@PathVariable("cId") Integer cId,@PathVariable("sId") Integer sId){
+        iClassService.dropStudentOfClass(cId,sId);
+        return "redirect:/class/queryStudent/"+cId;
+    }
+    //点到
+    @RequestMapping("/comeOn/{cId}/{sId}")
+    public String comeOn(@PathVariable("cId") Integer cId,@PathVariable("sId") Integer sId){
+        iClassService.comeOn(sId);
+        return "redirect:/class/queryStudent/"+cId;
     }
 }

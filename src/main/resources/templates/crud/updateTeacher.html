@@ -57,22 +57,22 @@
             <form th:action="@{/teacher/updateTeacher}" method="post">
                 <input type="hidden" name="teacherId" th:value="${teacher.getTeacherId()}">
             <div class="form-group">
-                <label>姓名</label>
-                <input type="text" class="form-control"  name="teacherName" th:value="${teacher.getTeacherName()}">
+                <label>教师姓名</label>
+                <input type="text" class="form-control"style="width: 35%"  name="teacherName" th:value="${teacher.getTeacherName()}">
             </div>
             <div class="form-group">
                 <label>职位</label>
-                <input type="text" class="form-control"  name="position" th:value="${teacher.getPosition()}">
+                <input type="text" class="form-control" style="width: 35%" name="position" th:value="${teacher.getPosition()}">
             </div>
             <div class="form-group">
                 <label>入职时间</label>
-                <input type="text"  class="form-control" name="comeTime"  th:value="${#dates.format(teacher.getComeTime(),'yyyy-MM-dd HH:mm')}">
+                <input type="date"  class="form-control"style="width: 35%" name="comeTime"  th:value="${#dates.format(teacher.getComeTime(),'yyyy-MM-dd')}">
             </div>
                 <div class="form-group">
-                <label>电话号码</label>
-                <input type="text"  class="form-control" name="telephoneNumber" th:value="${teacher.getTelephoneNumber()}">
+                    <label>电话号码</label>
+                    <input type="text"  class="form-control" style="width: 35%"name="telephoneNumber" th:value="${teacher.getTelephoneNumber()}">
             </div>
-            <button type="submit" class="btn btn-primary">提交</button>
+            <button type="submit" class="btn btn-primary"style="margin-left: 31%">提交</button>
             </form>
 
         </main>

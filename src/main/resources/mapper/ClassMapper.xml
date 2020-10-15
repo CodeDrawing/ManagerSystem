@@ -43,4 +43,10 @@ select * from class c,teacher t where c.teacherId=t.teacherId and c.classId=#{id
     <delete id="dropClass" parameterType="java.lang.Integer">
         delete from class where classId=#{id}
     </delete>
+    <delete id="dropStudentOfClass" parameterType="java.lang.Integer">
+        delete from classselect where classId=#{cId} and studentId=#{sId}
+    </delete>
+    <update id="comeOn" parameterType="java.lang.Integer">
+        update student set restOfClass=restofCLass-2 where studentId=#{sId}
+    </update>
 </mapper>

@@ -55,48 +55,55 @@
 
         <!--添加员工的表单-->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <form th:action="@{/student/addStudent}" method="post">
+<!--            <form th:action="@{/student/uploadStudentPhoto}" method="post" enctype="multipart/form-data">-->
+<!--                <div class="form-group">-->
+<!--                    <input type="file" name="studentPhoto" value="选择学生照片">-->
+<!--                    <input type="submit"  value="上传图片">-->
+<!--                </div>-->
+<!--            </form>-->
+            <form th:action="@{/student/addStudent}" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label>姓名</label>
-                <input type="text" class="form-control" placeholder="请输入学生姓名" name="studentName">
+                <label>学生头像</label>
+                    <input type="file" name="studentPhoto"  value="选择学生照片" style="width:35%">
             </div>
             <div class="form-group">
-                <label>年龄</label>
-                <input type="text" class="form-control" placeholder="请输入学生年龄" name="age">
+                <input type="text" class="form-control" placeholder="请输入学生姓名" name="studentName" style="width:35%">
+            </div>
+            <div class="form-group" >
+                <input type="text" class="form-control" placeholder="请输入学生年龄" name="age" style="width: 35%">
+
             </div>
             <div class="form-group">
-                <label>性别</label><br/>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="sex" value="男">
+                <label >性别:</label>
+                <div class="form-check form-check-inline" style="margin-left: 1%" >
+                    <input class="form-check-input" type="radio" name="sex" value="男" >
                     <label class="form-check-label">男</label>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="sex" value="女">
+                <div class="form-check form-check-inline" style="margin-left: 3%">
+                    <input class="form-check-input" type="radio" name="sex" value="女" >
                     <label class="form-check-label">女</label>
                 </div>
             </div>
             <div class="form-group">
-                <label>入学时间</label>
+                <input type="date" class="form-control" name="admissionTime"style="width: 35%">
             </div>
             <div class="form-group">
-                <label>剩余课时</label>
-                <input type="text" name="restOfClass" class="form-control" placeholder="请输入剩余课时" >
+                <input type="text" name="allClass" class="form-control" placeholder="请输入总课时" style="width: 35%">
             </div>
             <div class="form-group">
-                <label>家长姓名</label>
-                <input type="text" name="parentsName" class="form-control" placeholder="请输入家长姓名" >
+                <input type="text" name="cumulativeScoring" class="form-control" placeholder="请输入积分" style="width: 35%">
+            </div>
+            <div class="form-group">
+                <input type="text" name="parentsName" class="form-control" placeholder="请输入家长姓名" style="width: 35%" >
             </div>
            <div class="form-group">
-               <label>家长电话</label>
-               <input type="text" name="telephoneNumber" class="form-control" placeholder="请输入家长电话" >
+               <input type="text" name="telephoneNumber" class="form-control" placeholder="请输入家长电话" style="width: 35%" >
            </div>
            <div class="form-group">
-               <label>与学生关系</label>
-               <input type="text" name="relationshipWithStudent" class="form-control" placeholder="与学生的关系" >
+               <input type="text" name="relationshipWithStudent" class="form-control" placeholder="与学生的关系" style="width: 35%" >
            </div>
-            <button type="submit" class="btn btn-primary">添加</button>
+            <button type="submit" class="btn btn-primary" style="margin-left: 31%">添加</button>
             </form>
-
         </main>
     </div>
 </div>

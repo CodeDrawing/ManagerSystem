@@ -64,6 +64,7 @@
 					</form>
 					<div class="table-responsive">
 						<table class="table table-striped table-sm">
+
 							<thead>
 								<tr>
 									<th>id</th>
@@ -78,7 +79,8 @@
 									<td>[[${studentList.getStudentName()}]]</td>
 									<td>[[${studentList.getRestOfClass()}]]</td>
 									<td>
-										<a class="btn btn-sm btn-danger" th:href="@{/class/}+${studentList.getStudentId()}">删除</a>
+										<a class="btn btn-sm btn-danger" th:href="@{/class/dropStudentOfClass/}+${id}+@{/}+${studentList.getStudentId()}">删除</a>
+										<a class="btn btn-sm btn-warning" th:href="@{/class/comeOn/}+${id}+@{/}+${studentList.getStudentId()}">点到</a>
 									</td>
 								</tr>
 							</tbody>

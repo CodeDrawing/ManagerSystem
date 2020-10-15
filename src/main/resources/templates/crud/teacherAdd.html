@@ -56,22 +56,18 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <form th:action="@{/teacher/addTeacher}" method="post">
             <div class="form-group">
-                <label>姓名</label>
-                <input type="text" class="form-control" placeholder="请输入新增姓名" name="teacherName">
+                <input type="text" class="form-control" style="width: 35%"placeholder="请输入新增姓名" name="teacherName">
             </div>
             <div class="form-group">
-                <label>职位</label>
-                <input type="text" class="form-control" placeholder="请输入所属职位" name="position">
+                <input type="text" class="form-control"style="width: 35%" placeholder="请输入所属职位" name="position">
             </div>
             <div class="form-group">
-                <label>入职时间</label>
-                <input type="text" class="form-control" placeholder="请输入入职时间" name="comeTime">
+                <input type="date" class="form-control" style="width: 35%" name="comeTime">
             </div>
             <div class="form-group">
-                <label>电话号码</label>
-                <input type="text"  class="form-control" placeholder="请输入电话号码" name="telephoneNumber" >
+                <input type="text"  class="form-control"style="width: 35%" placeholder="请输入电话号码" name="telephoneNumber" >
             </div>
-            <button type="submit" class="btn btn-primary">添加</button>
+            <button type="submit" class="btn btn-primary" style="margin-left: 31%">添加</button>
             </form>
 
         </main>

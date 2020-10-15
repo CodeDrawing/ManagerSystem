@@ -15,4 +15,6 @@ import java.util.List;
 public interface UserMapper {
 //    登陆 正确返回1 不正确返回2
    public List<User> loginIn(User user);
+   //查询权限
+   public int queryPermission(String name);
 }

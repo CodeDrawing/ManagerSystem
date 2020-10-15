@@ -62,7 +62,9 @@
 									<th>姓名</th>
 									<th>年龄</th>
 									<th>性别</th>
+									<th>积分</th>
 									<th>入学时间</th>
+									<th>总课时</th>
 									<th>剩余课时</th>
 									<th>家长姓名</th>
 									<th>家长电话</th>
@@ -76,14 +78,16 @@
 									<td>[[${student.getStudentName()}]]</td>
 									<td>[[${student.getAge()}]]</td>
 									<td>[[${student.getSex()}]]</td>
-									<td>[[${#dates.format(student.getAdmissionTime(),'yyyy-MM-dd HH:mm:ss')}]]</td>
+									<td>[[${student.getCumulativeScoring()}]]</td>
+									<td>[[${#dates.format(student.getAdmissionTime(),'yyyy-MM-dd')}]]</td>
+									<td>[[${student.getAllClass()}]]</td>
 									<td>[[${student.getRestOfClass()}]]</td>
 									<td>[[${student.getParentsName()}]]</td>
 									<td>[[${student.getTelephoneNumber()}]]</td>
 									<td>[[${student.getRelationshipWithStudent()}]]</td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/student/toUpdateStudent/}+${student.getStudentId()}">编辑</a>
-										<a class="btn btn-sm btn-danger" th:href="@{/student/dropStudent/}+${student.getStudentId()}">删除</a>
+										<a class="btn btn-sm btn-danger" onclick="javascript:return drop();" th:href="@{/student/dropStudent/}+${student.getStudentId()}">删除</a>
 									</td>
 								</tr>
 							</tbody>
@@ -109,33 +113,13 @@
 		<!-- Graphs -->
 		<script type="text/javascript" src="/js/Chart.min.js"></script>
 		<script>
-			var ctx = document.getElementById("myChart");
-			var myChart = new Chart(ctx, {
-				type: 'line',
-				data: {
-					labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-					datasets: [{
-						data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-						lineTension: 0,
-						backgroundColor: 'transparent',
-						borderColor: '#007bff',
-						borderWidth: 4,
-						pointBackgroundColor: '#007bff'
-					}]
-				},
-				options: {
-					scales: {
-						yAxes: [{
-							ticks: {
-								beginAtZero: false
-							}
-						}]
-					},
-					legend: {
-						display: false,
-					}
+			function drop(){
+				if(confirm("确认要删除该记录吗?这将无法撤销!")){
+					return true;
+				}else{
+					return false;
 				}
-			});
+			}
 		</script>
 
 	</body>

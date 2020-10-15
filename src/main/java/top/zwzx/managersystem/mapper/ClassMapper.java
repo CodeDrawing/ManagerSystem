@@ -28,4 +28,7 @@ public interface ClassMapper {
     public classClass showOneClass(Integer id);
     public void updateClass(classClass classClass);
     public void dropClass(int id);
+    public void dropStudentOfClass(Integer cId,Integer sId);
+    public void comeOn(Integer sId);
+
 }

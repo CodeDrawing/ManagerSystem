@@ -75,5 +75,15 @@ public class ClassServiceImpl implements IClassService {
         classMapper.dropClass(id);
     }
 
+    @Override
+    public void dropStudentOfClass(Integer cId, Integer sId) {
+        classMapper.dropStudentOfClass(cId,sId);
+    }
+
+    @Override
+    public void comeOn(Integer sId) {
+        classMapper.comeOn(sId);
+    }
+
 
 }

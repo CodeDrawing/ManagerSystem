@@ -57,44 +57,41 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <form th:action="@{/salary/salaryAdd}" method="post">
                 <div class="form-group">
-                    <label>姓名</label>
-                    <select class="form-control" name="teacherName">
+                    <select class="form-control" name="teacherName" style="width:35%">
                         <option th:each="teacher:${teacherList}" th:text="${teacher.getTeacherName()}" th:value="${teacher.getTeacherName()}"></option>
                     </select>
                 </div>
-
             <div class="form-group">
-                <label>基础工资</label>
-                <input type="text" class="form-control" placeholder="请输入基础工资" name="baseSalary">
+                <input type="text" class="form-control" style="width: 35%"placeholder="请输入基础工资" name="baseSalary">
             </div>
             <div class="form-group">
-                <label>课时费</label>
-                <input type="text" class="form-control" placeholder="请输入课时费" name="classMoney">
+                <input type="text" class="form-control" style="width: 35%"placeholder="请输入课时费" name="classMoney">
             </div>
             <div class="form-group">
-                <label>提成</label>
-                <input type="text" class="form-control" placeholder="请输入提成" name="commission">
-            </div>
-            <div class="form-group">
-                <label>请假天数</label>
-                <input type="text" class="form-control" placeholder="请输入请假天数" name="leaveDays">
-            </div>
-            <div class="form-group">
-                <label>扣款</label>
-                <input type="text" class="form-control" placeholder="请输入扣款金额" name="deductions">
-            </div>
-            <div class="form-group">
-                <label>时间</label>
-                <input type="text" class="form-control" placeholder="请输入该条工资记录的年月" name="dateTime">
+                <input type="text" class="form-control"style="width: 35%" placeholder="请输入提成" name="commission">
             </div>
                 <div class="form-group">
-                    <label>是否已发放</label>
-                    <select class="form-control" name="issue">
-                        <option value="0">否</option>
+                <input type="text" class="form-control"style="width: 35%" placeholder="请输入积分" name="cumulativeScoring">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control"style="width: 35%" placeholder="请输入请假天数" name="leaveDays">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control"style="width: 35%" placeholder="请输入扣款" name="performance">
+            </div>
+
+                <div class="form-group">
+<!--                    <input type="text" class="form-control" placeholder="请输入日期" name="dateTime">-->
+                    <input type="month" class="form-control"  name="dateTime" style="width: 35%">
+                </div>
+                <div class="form-group">
+                    <select class="form-control" name="issue" style="width:35%">
                         <option value="1">是</option>
+                        <option value="0">否</option>
                     </select>
                 </div>
-            <button type="submit" class="btn btn-primary">添加</button>
+
+            <button type="submit" class="btn btn-primary" style="margin-left: 31%">添加</button>
             </form>
 
         </main>

@@ -40,6 +40,10 @@ public class SalaryController {
         iSalaryService.salaryAdd(salary);
         return "redirect:/salary/showAllSalary";
     }
+    @RequestMapping("/toAddSalary")
+    public String toAddSalary(){
+        return "crud/salaryAdd";
+    }
 
     @RequestMapping("/toSalaryUpdate/{id}")
     public String toSalaryUpdate(@PathVariable("id") Integer id,Model model){

@@ -41,9 +41,8 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     @Override
-    public Student updateStudent(Student student) {
-        Student student1 = studentMapper.updateStudent(student);
-        return student1;
+    public void updateStudent(Student student) {
+         studentMapper.updateStudent(student);
     }
 
     @Override

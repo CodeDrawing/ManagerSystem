@@ -21,4 +21,10 @@ public class UserServiceImpl implements IUserService {
         List<User> users = userMapper.loginIn(user);
         return users;
     }
+
+    @Override
+    public int queryPermission(String name) {
+        int i = userMapper.queryPermission(name);
+        return i;
+    }
 }

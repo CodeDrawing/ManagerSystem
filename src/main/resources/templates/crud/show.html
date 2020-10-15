@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http:www/thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生展示</title>
+    <link rel="stylesheet" th:href="@{/css/show.css}">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+
+</head>
+<body >
+<div th:replace="~{commons/commons::topbar}"></div>
+<div th:replace="~{commons/commons::sidebar(active='showStudent.html')}"></div>
+<div style="margin-left: 20%">
+    <ul class="con-img clear">
+        <li  th:each="student:${studentsList}">
+            <img th:src="@{${student.getStudentPhotoPath()}}" >
+            <div>
+                <p th:text="${student.getStudentName()}"></p>
+                <p th:text="${student.getRestOfClass()}"></p>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

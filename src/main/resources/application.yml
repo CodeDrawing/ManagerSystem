@@ -32,6 +32,13 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
 mybatis:
   type-aliases-package: top.zwzx.managersystem.pojo
   mapper-locations: classpath:mapper/*.xml
+file.upload.path: G://uploadFile/
+file.upload.path.relative: /uploadFile/**

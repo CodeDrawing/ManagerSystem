@@ -57,23 +57,20 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <form th:action="@{/class/addClass}" method="post">
             <div class="form-group">
-                <label>课程名</label>
-                <input type="text" class="form-control" placeholder="请输入课程名" name="className">
+                <input type="text" class="form-control" placeholder="请输入课程名"style="width: 35%" name="className">
             </div>
             <div class="form-group">
-                <label>上课教室</label>
-                <input type="text" class="form-control" placeholder="请输入上课教室" name="classRoom">
+                <input type="text" class="form-control" placeholder="请输入上课教室"style="width: 35%" name="classRoom">
             </div>
+                <div class="form-group">
+                    <input type="date" class="form-control" name="classTime"style="width: 35%">
+                </div>
             <div class="form-group">
-                <label>上课时间</label><br/>
-                <input type="text" class="form-control" placeholder="请输入上课时间" name="classTime">
-            </div>
-            <div class="form-group">
-                <select class="form-control" name="teacherId" style="width:30%">
+                <select class="form-control" name="teacherId" style="width:35%">
                     <option th:each="teacher:${teacherList}" th:text="${teacher.getTeacherName()}" th:value="${teacher.getTeacherId()}"></option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">添加</button>
+            <button type="submit" class="btn btn-primary" style="margin-left: 31%">添加</button>
             </form>
 
         </main>

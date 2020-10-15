@@ -58,41 +58,41 @@
             <form th:action="@{/salary/salaryUpdate}" method="post">
                 <input type="hidden" name="salaryId" th:value="${salary.getSalaryId()}">
             <div class="form-group">
-                <label>姓名</label>
-                <input type="text" class="form-control"  name="teacherName" th:value="${salary.getTeacherName()}">
+                <label>教师姓名</label>
+                <input type="text" class="form-control"style="width: 35%"  name="teacherName" th:value="${salary.getTeacherName()}">
             </div>
             <div class="form-group">
                 <label>基础工资</label>
-                <input type="text" class="form-control"  name="baseSalary" th:value="${salary.getBaseSalary()}">
+                <input type="text" class="form-control" style="width: 35%" name="baseSalary" th:value="${salary.getBaseSalary()}">
             </div>
             <div class="form-group">
                 <label>课时费</label>
-                <input type="text" class="form-control"  name="classMoney" th:value="${salary.getClassMoney()}">
+                <input type="text" class="form-control"style="width: 35%" name="classMoney" th:value="${salary.getClassMoney()}">
             </div>
             <div class="form-group">
                 <label>提成</label>
-                <input type="text" class="form-control"  name="commission" th:value="${salary.getCommission()}">
+                <input type="text" class="form-control" style="width: 35%" name="commission" th:value="${salary.getCommission()}">
             </div>
             <div class="form-group">
                 <label>请假天数</label>
-                <input type="text" class="form-control"  name="leaveDays" th:value="${salary.getLeaveDays()}">
+                <input type="text" class="form-control" style="width: 35%" name="leaveDays" th:value="${salary.getLeaveDays()}">
             </div>
             <div class="form-group">
                 <label>扣款</label>
-                <input type="text" class="form-control"  name="deductions" th:value="${salary.getDeductions()}">
+                <input type="text" class="form-control" style="width: 35%" name="deductions" th:value="${salary.getDeductions()}">
             </div>
             <div class="form-group">
-                <label>时间</label>
-                <input type="text" class="form-control"  name="dateTime" th:value="${salary.getDateTime()}">
+                <label>日期</label>
+                <input type="date" class="form-control"style="width: 35%"  name="dateTime" th:value="${salary.getDateTime()}">
             </div>
-                <div class="form-group">
-                    <label>是否已发放</label>
-                    <select class="form-control" name="issue" >
+            <div class="form-group">
+                <label>是否发放</label>
+                <select class="form-control" name="issue" style="width:35%">
                         <option value="0">否</option>
                         <option value="1">是</option>
-                    </select>
-                </div>
-            <button type="submit" class="btn btn-primary">提交</button>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-left: 31%">提交</button>
             </form>
 
         </main>
@@ -114,35 +114,7 @@
 
 <!-- Graphs -->
 <script type="text/javascript" src="/js/Chart.min.js"></script>
-<script>
-    var ctx = document.getElementById("myChart");updateEmp
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            datasets: [{
-                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: '#007bff',
-                borderWidth: 4,
-                pointBackgroundColor: '#007bff'
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: false
-                    }
-                }]
-            },
-            legend: {
-                display: false,
-            }
-        }
-    });
-</script>
+
 
 </body>
 

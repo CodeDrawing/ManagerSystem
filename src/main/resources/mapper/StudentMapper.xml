@@ -13,15 +13,18 @@
 
 
     <insert  id="addStudent" parameterType="top.zwzx.managersystem.pojo.Student">
-        insert into student(studentName,age,admissionTime,sex,restOfClass,parentsName,telephoneNumber,relationshipWithStudent)
-        values (#{studentName},#{age},#{admissionTime},#{sex},#{restOfClass},#{parentsName},#{telephoneNumber},#{relationshipWithStudent});
+        insert into student(studentName,age,admissionTime,sex,restOfClass,parentsName,telephoneNumber,relationshipWithStudent,cumulativeScoring,allClass,studentPhotoPath)
+        values (#{studentName},#{age},#{admissionTime},#{sex},#{restOfClass},#{parentsName},#{telephoneNumber},#{relationshipWithStudent},#{cumulativeScoring},#{allClass},#{studentPhotoPath});
     </insert>
     <delete id="dropStudent" parameterType="java.lang.Integer">
         delete from student where studentId=#{id}
     </delete>
-    <update id="updateStudent" parameterType="top.zwzx.managersystem.pojo.Student">
-        update student set studentName=#{studentName},age=#{age},admissionTime=#{admissionTime},
-        sex=#{sex},restOfClass=#{restOfClass},parentsName=#{parentsName},telephoneNumber=#{telephoneNumber},relationshipWithStudent=#{relationshipWithStudent}
+    <update id="updateStudent" parameterType="top.zwzx.managersystem.pojo.Student" >
+        update student set studentName=#{studentName},age=#{age},admissionTime=#{admissionTime},sex=#{sex},restOfClass=#{restOfClass},parentsName=#{parentsName},
+        telephoneNumber=#{telephoneNumber},relationshipWithStudent=#{relationshipWithStudent},cumulativeScoring=#{cumulativeScoring},allClass=#{allClass}
+        <if test="studentPhotoPath!=null">
+            ,studentPhotoPath=#{studentPhotoPath}
+        </if>
         where studentId=#{studentId}
     </update>
     <select id="showOneStudent" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.Student">

@@ -26,6 +26,7 @@ public class SalaryServiceImpl implements ISalaryService {
     @Override
     public void salaryAdd(Salary salary) {
         salary.setRealWages(salary.getBaseSalary()+salary.getClassMoney()+salary.getCommission()-salary.getLeaveDays()*50-salary.getDeductions());
+        
         salaryMapper.salaryAdd(salary);
     }
 
