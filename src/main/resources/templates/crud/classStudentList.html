@@ -53,7 +53,7 @@
 				<div th:replace="~{commons/commons::sidebar(active='list.html')}"></div>
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-					<h2><a class="btn btn-sm btn-success" th:href="@{/class/add}">添加该班学生</a></h2>
+					<h2><a class="btn btn-sm btn-success" >添加该班学生</a></h2>
 					<form th:action="@{/class/addStudentToClass/}+${id}">
 					<div class="form-group">
 						<select class="form-control" name="studentId" style="width:30%">
@@ -79,8 +79,8 @@
 									<td>[[${studentList.getStudentName()}]]</td>
 									<td>[[${studentList.getRestOfClass()}]]</td>
 									<td>
-										<a class="btn btn-sm btn-danger" th:href="@{/class/dropStudentOfClass/}+${id}+@{/}+${studentList.getStudentId()}">删除</a>
-										<a class="btn btn-sm btn-warning" th:href="@{/class/comeOn/}+${id}+@{/}+${studentList.getStudentId()}">点到</a>
+										<a class="btn btn-sm btn-danger" onclick="javascript:return drop();" th:href="@{/class/dropStudentOfClass/}+${id}+@{/}+${studentList.getStudentId()}">删除</a>
+										<a class="btn btn-sm btn-warning" onclick="javasript:return come();"  th:href="@{/class/comeOn/}+${id}+@{/}+${studentList.getStudentId()}">点到</a>
 									</td>
 								</tr>
 							</tbody>
@@ -106,35 +106,22 @@
 
 		<!-- Graphs -->
 		<script type="text/javascript" src="/js/Chart.min.js"></script>
-		<script>
-			var ctx = document.getElementById("myChart");
-			var myChart = new Chart(ctx, {
-				type: 'line',
-				data: {
-					labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-					datasets: [{
-						data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-						lineTension: 0,
-						backgroundColor: 'transparent',
-						borderColor: '#007bff',
-						borderWidth: 4,
-						pointBackgroundColor: '#007bff'
-					}]
-				},
-				options: {
-					scales: {
-						yAxes: [{
-							ticks: {
-								beginAtZero: false
-							}
-						}]
-					},
-					legend: {
-						display: false,
-					}
-				}
-			});
-		</script>
+	<script>
+		function drop(){
+			if(confirm("确认要删除该记录吗?这将无法撤销!")){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		function come(){
+			if(confirm("确定点到？")){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	</script>
 
 	</body>
 

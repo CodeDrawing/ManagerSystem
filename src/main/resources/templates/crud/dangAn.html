@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http:www/thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Dashboard Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/show.css}">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+    <style type="text/css">
+        /* Chart.js */
+
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+</head>
+
+<body>
+<div th:replace="~{commons/commons::topbar}"></div>
+
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div th:replace="~{commons/commons::sidebar(active='showStudent.html')}"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <div>
+                <div style="display: inline">
+                    <img th:src="@{${student.getStudentPhotoPath()}}" class="img-circle"
+                         style="width: 10%;height: 10%;display: inline">
+                </div>
+                <div style="display: inline">
+                    <div style="display: inline;height: 50%;">
+                        <label th:text="${'学生姓名:'+student.getStudentName()}" ></label>
+                    </div><br/>
+                    <div style="height: 50%;display: inline">
+                        <label th:text="${'入学时间:'+student.getAdmissionTime()}" ></label>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-left: 2%">
+                <ul class="con-img clear">
+                    <li th:each="imageStyle:${imageStyles}">
+                        <img th:src="@{${imageStyle.getImage()}}">
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <table class="table table-striped table-sm" >
+                    <thead>
+                    <tr>
+                        <th>上课班级</th>
+                        <th>上课时间</th>
+                        <th>课程记录</th>
+                        <th>点到教师</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="classRecord:${classRecords}">
+                        <td>[[${classRecord.getClassName()}]]</td>
+                        <td>[[${#dates.format(classRecord.getDate(),'yyyy-MM-dd')}]]</td>
+                        <td><p th:title="${classRecord.getText()}">查看</p></td>
+                        <td>[[${classRecord.getCreateTeacher()}]]</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" th:href="@{/dangAn/toUpdateClassRecord/}+${classRecord.getID()}">编辑</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<!-- Icons -->
+<script type="text/javascript" src="/js/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+
+<!-- Graphs -->
+<script type="text/javascript" src="/js/Chart.min.js"></script>
+
+
+</body>
+
+</html>

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import top.zwzx.managersystem.pojo.ClassRecord;
 import top.zwzx.managersystem.pojo.Student;
 import top.zwzx.managersystem.pojo.Teacher;
 import top.zwzx.managersystem.pojo.classClass;
@@ -13,6 +14,8 @@ import top.zwzx.managersystem.service.IClassService;
 import top.zwzx.managersystem.service.IStudentService;
 import top.zwzx.managersystem.service.ITeacherService;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -110,8 +113,14 @@ public class ClassController {
     }
     //点到
     @RequestMapping("/comeOn/{cId}/{sId}")
-    public String comeOn(@PathVariable("cId") Integer cId,@PathVariable("sId") Integer sId){
+    public String comeOn(@PathVariable("cId") Integer cId, @PathVariable("sId") Integer sId, HttpServletRequest request){
         iClassService.comeOn(sId);
+        ClassRecord classRecord=new ClassRecord();
+        classRecord.setClassId(cId);
+        classRecord.setStudentId(sId);
+        classRecord.setDate(new Date());
+        classRecord.setCreateTeacher((String) request.getSession().getAttribute("loginUser"));
+        iClassService.classRecord(classRecord);
         return "redirect:/class/queryStudent/"+cId;
     }
 }

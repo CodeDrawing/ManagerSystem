@@ -3,6 +3,7 @@ package top.zwzx.managersystem.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.zwzx.managersystem.mapper.ClassMapper;
+import top.zwzx.managersystem.pojo.ClassRecord;
 import top.zwzx.managersystem.pojo.Student;
 import top.zwzx.managersystem.pojo.Teacher;
 import top.zwzx.managersystem.pojo.classClass;
@@ -83,6 +84,11 @@ public class ClassServiceImpl implements IClassService {
     @Override
     public void comeOn(Integer sId) {
         classMapper.comeOn(sId);
+    }
+
+    @Override
+    public void classRecord(ClassRecord classRecord) {
+        classMapper.classRecord(classRecord);
     }
 
 

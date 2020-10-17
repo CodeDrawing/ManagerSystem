@@ -1,5 +1,6 @@
 package top.zwzx.managersystem.service;
 
+import top.zwzx.managersystem.pojo.ClassRecord;
 import top.zwzx.managersystem.pojo.Student;
 import top.zwzx.managersystem.pojo.Teacher;
 import top.zwzx.managersystem.pojo.classClass;
@@ -24,5 +25,6 @@ public interface IClassService {
     public void dropClass(int id);
     public void dropStudentOfClass(Integer cId,Integer sId);
     public void comeOn(Integer sId);
+    public void classRecord(ClassRecord classRecord);
 
 }

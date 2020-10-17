@@ -17,10 +17,10 @@
 <div style="margin-left: 20%">
     <ul class="con-img clear">
         <li  th:each="student:${studentsList}">
-            <img th:src="@{${student.getStudentPhotoPath()}}" >
+            <img   th:src="@{${student.getStudentPhotoPath()}}" >
             <div>
-                <p th:text="${student.getStudentName()}"></p>
-                <p th:text="${student.getRestOfClass()}"></p>
+                <a th:href="@{/dangAn/showDangAnForStudentId/}+${student.getStudentId()}">  <p th:text="${student.getStudentName()}"></p></a>
+                <p th:text="${'剩余课时：'+student.getRestOfClass()}"></p>
             </div>
         </li>
     </ul>

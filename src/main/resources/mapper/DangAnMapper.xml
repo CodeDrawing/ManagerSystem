@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zwzx.managersystem.mapper.DangAnMapper">
+<select id="showClassRecord" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.DangAn">
+    select * from classrecord c,class cl where c.classId=cl.classId and c.studentId=#{id}
+</select>
+    <select id="showImage" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.DangAn">
+        select * from imagestyle i where i.studentId=#{id}
+    </select>
+    <select id="showOneClassRecord" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.DangAn">
+        select * from classrecord c,class cl where c.classId=cl.classId and c.ID=#{id}
+    </select>
+    <update id="updateClassRecord" parameterType="top.zwzx.managersystem.pojo.DangAn">
+        update classrecord set text=#{text} where ID=#{ID}
+    </update>
+    <insert id="addImage" parameterType="top.zwzx.managersystem.pojo.DangAn">
+        insert into imagestyle (studentId,image,classRecordId,dateTime) values (#{studentId},#{image},#{classRecordId},#{dateTime})
+    </insert>
+    <select id="showStudentOfImage" parameterType="top.zwzx.managersystem.pojo.DangAn" resultType="top.zwzx.managersystem.pojo.DangAn">
+    select * from classrecord c,imagestyle i where i.classRecordId=c.ID  and c.studentId=#{studentId} and  ID=#{ID}
+    </select>
+
+</mapper>

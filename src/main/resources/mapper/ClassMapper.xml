@@ -9,7 +9,7 @@
 select * from class c,teacher t where c.teacherId=t.teacherId
  </select>
     <insert id="addClass" parameterType="top.zwzx.managersystem.pojo.classClass">
-        insert into class(className,classRoom,classTime,teacherId) values (#{className},#{classRoom},#{classTime},#{teacherId})
+        insert into class(className,classRoom,classTime,teacherId,text) values (#{className},#{classRoom},#{classTime},#{teacherId},#{text})
     </insert>
     <select id="countStudent" resultType="java.lang.Integer" parameterType="top.zwzx.managersystem.pojo.classClass">
         select count(*) from classSelect where classId=#{classId}
@@ -38,7 +38,7 @@ select * from class c,teacher t where c.teacherId=t.teacherId
 select * from class c,teacher t where c.teacherId=t.teacherId and c.classId=#{id}
     </select>
     <update id="updateClass" parameterType="top.zwzx.managersystem.pojo.classClass">
-        update class set className=#{className} , classRoom=#{classRoom},classTime=#{classTime},teacherId=#{teacherId} where classId=#{classId}
+        update class set className=#{className} , classRoom=#{classRoom},classTime=#{classTime},teacherId=#{teacherId},text=#{text} where classId=#{classId}
     </update>
     <delete id="dropClass" parameterType="java.lang.Integer">
         delete from class where classId=#{id}
@@ -49,4 +49,7 @@ select * from class c,teacher t where c.teacherId=t.teacherId and c.classId=#{id
     <update id="comeOn" parameterType="java.lang.Integer">
         update student set restOfClass=restofCLass-2 where studentId=#{sId}
     </update>
+    <insert id="classRecord" parameterType="top.zwzx.managersystem.pojo.ClassRecord">
+        insert into classrecord(studentId,text,date,classId,createTeacher) values (#{studentId},#{text},#{date},#{classId},#{createTeacher})
+    </insert>
 </mapper>

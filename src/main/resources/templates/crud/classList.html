@@ -61,8 +61,9 @@
 									<th>id</th>
 									<th>课程名</th>
 									<th>上课教室</th>
-									<th>上课时间</th>
+									<th>开课时间</th>
 									<th>上课教师</th>
+									<th>上课时间</th>
 									<th>操作</th>
 								</tr>
 							</thead>
@@ -73,6 +74,7 @@
 									<td>[[${classList.getClassRoom()}]]</td>
 									<td>[[${#dates.format(classList.getClassTime(),'yyyy-MM-dd')}]]</td>
 									<td>[[${classList.getTeacherName()}]]</td>
+									<td th:title="${classList.getText()}">详情</td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/class/toUpdateClass/}+${classList.getClassId()}">编辑</a>
 										<a class="btn btn-sm btn-danger"onclick="javascript:return drop();" th:href="@{/class/dropClass/}+${classList.getClassId()}">删除</a>

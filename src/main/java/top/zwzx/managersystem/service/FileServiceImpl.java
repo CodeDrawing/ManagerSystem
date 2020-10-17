@@ -36,7 +36,6 @@ public class FileServiceImpl implements IFileService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(dest);
 //返回一个路径
         return "/uploadFile/"+ fileName;
     }

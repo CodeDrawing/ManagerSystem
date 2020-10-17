@@ -57,6 +57,7 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <form th:action="@{/salary/salaryAdd}" method="post">
                 <div class="form-group">
+                    <label>教师姓名：</label>
                     <select class="form-control" name="teacherName" style="width:35%">
                         <option th:each="teacher:${teacherList}" th:text="${teacher.getTeacherName()}" th:value="${teacher.getTeacherName()}"></option>
                     </select>
@@ -90,7 +91,6 @@
                         <option value="0">否</option>
                     </select>
                 </div>
-
             <button type="submit" class="btn btn-primary" style="margin-left: 31%">添加</button>
             </form>
 

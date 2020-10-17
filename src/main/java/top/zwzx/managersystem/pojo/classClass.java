@@ -21,4 +21,5 @@ public class classClass {
     private Integer countStudent;
     private Integer teacherId;
     private String teacherName;
+    private String text;
 }

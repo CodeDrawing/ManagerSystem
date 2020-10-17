@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http:www/thymeleaf.org">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/show.css}">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+
+</head>
+
+<body>
+<div th:replace="~{commons/commons::topbar}"></div>
+
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div th:replace="~{commons/commons::sidebar(active='classList.html')}"></div>
+
+        <!--添加员工的表单-->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <form th:action="@{/dangAn/updateClassRecord}" method="post">
+                <input type="hidden" name="ID" th:value="${dangAn.getID()}">
+                <input type="hidden" name="studentId" th:value="${dangAn.getStudentId()}">
+                <div class="form-group">
+                    <label>课程名</label>
+                    <input type="text" class="form-control" style="width: 35%" name="className"
+                           th:value="${dangAn.getClassName()}" disabled>
+                </div>
+                <div class="form-group">
+                    <label>上课时间</label>
+                    <input type="text" class="form-control" style="width: 35%" name="date"
+                           th:value="${#dates.format(dangAn.getDate(),'yyyy-MM-dd')}" disabled>
+                </div>
+                <div class="form-group">
+                    <label>老师评价</label>
+                    <input type="textacer" class="form-control" style="width: 35%" name="text"
+                           th:value="${dangAn.getText()}">
+                </div>
+                <div class="form-group">
+                    <label>点到教师</label>
+                    <input type="text" class="form-control" style="width: 35%" name="createTeacher"
+                           th:value="${dangAn.getCreateTeacher()}" disabled>
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-left: 31%">提交</button>
+            </form>
+            <div style="display:block;">
+                <form th:action="@{/dangAn/addImage}" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="hidden" name="classRecordId" th:value="${dangAn.getID()}">
+                        <input type="hidden" name="studentId" th:value="${dangAn.getStudentId()}">
+                        <input type="file" name="file" value="上课照片" style="width:35%" class="btn btn-info">
+                        <input type="submit" value="上传照片" >
+                    </div>
+                </form>
+            </div>
+            <div style="margin-left: 2%">
+                <ul class="con-img clear" >
+                    <li th:each="imageStyle:${imageStyles}">
+                        <img th:src="@{${imageStyle.getImage()}}">
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<!-- Icons -->
+<script type="text/javascript" src="/js/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+
+<!-- Graphs -->
+<script type="text/javascript" src="/js/Chart.min.js"></script>
+
+
+</body>
+
+</html>
