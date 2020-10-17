@@ -27,7 +27,7 @@
 	padding-left: 20px;
 }
 .con-img>li:hover>img{
-	transform: scale(2);
+	transform: scale(1.5);
 }
 .con-img>li:hover>div{
 	background-color: rgba(0,0,0,0.5);

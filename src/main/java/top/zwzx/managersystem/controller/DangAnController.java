@@ -55,11 +55,12 @@ public class DangAnController {
         return "redirect:/dangAn/showDangAnForStudentId/"+dangAn.getStudentId();
     }
     @RequestMapping("/addImage")
-    @ResponseBody
-    public void addImage(@RequestParam("file")MultipartFile file,DangAn dangAn){
+
+    public String addImage(@RequestParam("file")MultipartFile file,DangAn dangAn){
         String s = iFileService.fileUpload(file);
         dangAn.setImage(s);
         dangAn.setDateTime(new Date());
         iDangAnSerivce.addImage(dangAn);
+        return "redirect:/dangAn/toUpdateClassRecord/"+dangAn.getClassRecordId();
     }
 }
