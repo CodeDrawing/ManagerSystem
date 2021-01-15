@@ -33,7 +33,7 @@ public class UserController {
             httpSession.setAttribute("loginUser",username);
             int i = iUserService.queryPermission(username);
             httpSession.setAttribute("permission",i);
-            return "redirect:/main.html";
+            return "redirect:/teacher/showAllTeacher ";
         }else{
             model.addAttribute("msg","用户名或密码错误，请重试");
             return "index";

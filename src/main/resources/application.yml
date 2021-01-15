@@ -42,3 +42,5 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
 file.upload.path: G://uploadFile/
 file.upload.path.relative: /uploadFile/**
+server:
+  port: 80

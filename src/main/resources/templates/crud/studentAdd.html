@@ -12,46 +12,24 @@
     <title>添加学生</title>
     <!-- Bootstrap core CSS -->
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style1.css}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.css">
 
     <!-- Custom styles for this template -->
     <link th:href="@{/css/dashboard.css}" rel="stylesheet">
-    <style type="text/css">
-        /* Chart.js */
 
-        @-webkit-keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-            to {
-                opacity: 1
-            }
-        }
-
-        @keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-            to {
-                opacity: 1
-            }
-        }
-
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
-        }
-    </style>
 </head>
 
 <body>
-<div th:replace="~{commons/commons::topbar}"></div>
+<!--<div th:replace="~{commons/commons::topbar}"></div>-->
 
-</div>
+<!--</div>-->
 
 <div class="container-fluid">
     <div class="row">
 
-        <div th:replace="~{commons/commons::sidebar(active='list.html')}"></div>
+        <div th:replace="~{commons/commons::sidebar(active='studentList.html')}"></div>
 
         <!--添加员工的表单-->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
@@ -64,13 +42,13 @@
             <form th:action="@{/student/addStudent}" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label>学生头像</label>
-                    <input type="file" name="studentPhoto"  value="选择学生照片" style="width:35%">
+                    <input type="file" name="studentPhoto"  value="选择学生照片" style="width:65%">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="请输入学生姓名" name="studentName" style="width:35%">
+                <input type="text" class="form-control" placeholder="请输入学生姓名" name="studentName" style="width:65%">
             </div>
             <div class="form-group" >
-                <input type="text" class="form-control" placeholder="请输入学生年龄" name="age" style="width: 35%">
+                <input type="text" class="form-control" placeholder="请输入学生年龄" name="age" style="width: 65%">
 
             </div>
             <div class="form-group">
@@ -85,24 +63,24 @@
                 </div>
             </div>
             <div class="form-group">
-                <input type="date" class="form-control" name="admissionTime"style="width: 35%">
+                <input type="date" class="form-control" name="admissionTime"style="width: 65%">
             </div>
             <div class="form-group">
-                <input type="text" name="allClass" class="form-control" placeholder="请输入总课时" style="width: 35%">
+                <input type="text" name="allClass" class="form-control" placeholder="请输入总课时" style="width: 65%">
             </div>
             <div class="form-group">
-                <input type="text" name="cumulativeScoring" class="form-control" placeholder="请输入积分" style="width: 35%">
+                <input type="text" name="cumulativeScoring" class="form-control" placeholder="请输入积分" style="width: 65%">
             </div>
             <div class="form-group">
-                <input type="text" name="parentsName" class="form-control" placeholder="请输入家长姓名" style="width: 35%" >
+                <input type="text" name="parentsName" class="form-control" placeholder="请输入家长姓名" style="width: 65%" >
             </div>
            <div class="form-group">
-               <input type="text" name="telephoneNumber" class="form-control" placeholder="请输入家长电话" style="width: 35%" >
+               <input type="text" name="telephoneNumber" class="form-control" placeholder="请输入家长电话" style="width: 65%" >
            </div>
            <div class="form-group">
-               <input type="text" name="relationshipWithStudent" class="form-control" placeholder="与学生的关系" style="width: 35%" >
+               <input type="text" name="relationshipWithStudent" class="form-control" placeholder="与学生的关系" style="width: 65%" >
            </div>
-            <button type="submit" class="btn btn-primary" style="margin-left: 31%">添加</button>
+            <button type="submit" class="btn btn-primary" style="margin-left: 58%">添加</button>
             </form>
         </main>
     </div>
@@ -115,6 +93,9 @@
 <script type="text/javascript" src="/js/popper.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
 <!-- Icons -->
 <script type="text/javascript" src="/js/feather.min.js"></script>
 <script>
@@ -123,35 +104,7 @@
 
 <!-- Graphs -->
 <script type="text/javascript" src="/js/Chart.min.js"></script>
-<script>
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            datasets: [{
-                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: '#007bff',
-                borderWidth: 4,
-                pointBackgroundColor: '#007bff'
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: false
-                    }
-                }]
-            },
-            legend: {
-                display: false,
-            }
-        }
-    });
-</script>
+
 
 </body>
 

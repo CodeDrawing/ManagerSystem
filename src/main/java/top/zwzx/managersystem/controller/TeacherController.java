@@ -45,6 +45,7 @@ public class TeacherController {
     @RequestMapping("/toUpdateTeacher/{id}")
     public String toUpdateTeacher(@PathVariable("id")Integer id,Model model){
         Teacher teacher1 = iTeacherService.queryOneTeacher(id);
+        System.out.println(teacher1);
         model.addAttribute("teacher",teacher1);
         return "crud/updateTeacher";
     }

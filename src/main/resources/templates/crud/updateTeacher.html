@@ -15,6 +15,11 @@
 
     <!-- Custom styles for this template -->
     <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+
+
+    <link rel="stylesheet" th:href="@{/css/style1.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.css">
+
     <style type="text/css">
         /* Chart.js */
 
@@ -44,9 +49,8 @@
 </head>
 
 <body>
-<div th:replace="~{commons/commons::topbar}"></div>
 
-</div>
+
 
 <div class="container-fluid">
     <div class="row">
@@ -85,6 +89,7 @@
 <script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
 <script type="text/javascript" src="/js/popper.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Icons -->
 <script type="text/javascript" src="/js/feather.min.js"></script>
@@ -94,35 +99,6 @@
 
 <!-- Graphs -->
 <script type="text/javascript" src="/js/Chart.min.js"></script>
-<script>
-    var ctx = document.getElementById("myChart");updateEmp
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            datasets: [{
-                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: '#007bff',
-                borderWidth: 4,
-                pointBackgroundColor: '#007bff'
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: false
-                    }
-                }]
-            },
-            legend: {
-                display: false,
-            }
-        }
-    });
-</script>
 
 </body>
 

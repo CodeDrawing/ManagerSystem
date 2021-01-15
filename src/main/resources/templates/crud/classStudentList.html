@@ -14,43 +14,18 @@
 
 		<!-- Custom styles for this template -->
 		<link th:href="@{/css/dashboard.css}" rel="stylesheet">
-		<style type="text/css">
-			/* Chart.js */
-			
-			@-webkit-keyframes chartjs-render-animation {
-				from {
-					opacity: 0.99
-				}
-				to {
-					opacity: 1
-				}
-			}
-			
-			@keyframes chartjs-render-animation {
-				from {
-					opacity: 0.99
-				}
-				to {
-					opacity: 1
-				}
-			}
-			
-			.chartjs-render-monitor {
-				-webkit-animation: chartjs-render-animation 0.001s;
-				animation: chartjs-render-animation 0.001s;
-			}
-		</style>
+		<link rel="stylesheet" th:href="@{/css/style1.css}">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.css">
+
 	</head>
 
 	<body>
-	<div th:replace="~{commons/commons::topbar}"></div>
 
-		</div>
 
 		<div class="container-fluid">
 			<div class="row">
 
-				<div th:replace="~{commons/commons::sidebar(active='list.html')}"></div>
+				<div th:replace="~{commons/commons::sidebar(active='classList.html')}"></div>
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 					<h2><a class="btn btn-sm btn-success" >添加该班学生</a></h2>
@@ -97,6 +72,7 @@
 		<script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
 		<script type="text/javascript" src="/js/popper.min.js"></script>
 		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 		<!-- Icons -->
 		<script type="text/javascript" src="/js/feather.min.js"></script>

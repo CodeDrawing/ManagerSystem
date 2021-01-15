@@ -15,66 +15,42 @@
 
     <!-- Custom styles for this template -->
     <link th:href="@{/css/dashboard.css}" rel="stylesheet">
-    <style type="text/css">
-        /* Chart.js */
+    <link rel="stylesheet" th:href="@{/css/style1.css}">
 
-        @-webkit-keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-            to {
-                opacity: 1
-            }
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.css">
 
-        @keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-            to {
-                opacity: 1
-            }
-        }
-
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
-        }
-    </style>
 </head>
 
 <body>
-<div th:replace="~{commons/commons::topbar}"></div>
 
-</div>
 
 <div class="container-fluid">
     <div class="row">
 
-        <div th:replace="~{commons/commons::sidebar(active='list.html')}"></div>
+        <div th:replace="~{commons/commons::sidebar(active='classList.html')}"></div>
 
         <!--添加员工的表单-->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <form th:action="@{/class/addClass}" method="post">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="请输入课程名"style="width: 35%" name="className">
+                <input type="text" class="form-control" placeholder="请输入课程名"style="width: 65%" name="className">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="请输入上课教室"style="width: 35%" name="classRoom">
+                <input type="text" class="form-control" placeholder="请输入上课教室"style="width: 65%" name="classRoom">
             </div>
                 <div class="form-group">
-                    <input type="date" class="form-control" name="classTime"style="width: 35%">
+                    <input type="date" class="form-control" name="classTime"style="width: 65%">
                 </div>
             <div class="form-group">
-                <select class="form-control" name="teacherId" style="width:35%">
+                <select class="form-control" name="teacherId" style="width:65%">
                     <option th:each="teacher:${teacherList}" th:text="${teacher.getTeacherName()}" th:value="${teacher.getTeacherId()}"></option>
                 </select>
             </div>
                 <div class="form-group">
                     <label>上课时间</label>
-                    <input type="text" class="form-control" placeholder=""style="width: 35%" name="text" >
+                    <input type="text" class="form-control" placeholder=""style="width: 65%" name="text" >
                 </div>
-            <button type="submit" class="btn btn-primary" style="margin-left: 31%">添加</button>
+            <button type="submit" class="btn btn-primary" style="margin-left: 58%">添加</button>
             </form>
 
         </main>
@@ -87,6 +63,7 @@
 <script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
 <script type="text/javascript" src="/js/popper.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Icons -->
 <script type="text/javascript" src="/js/feather.min.js"></script>
@@ -96,35 +73,6 @@
 
 <!-- Graphs -->
 <script type="text/javascript" src="/js/Chart.min.js"></script>
-<script>
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            datasets: [{
-                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: '#007bff',
-                borderWidth: 4,
-                pointBackgroundColor: '#007bff'
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: false
-                    }
-                }]
-            },
-            legend: {
-                display: false,
-            }
-        }
-    });
-</script>
 
 </body>
 
