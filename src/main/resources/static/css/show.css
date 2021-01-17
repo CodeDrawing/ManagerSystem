@@ -6,7 +6,11 @@
 	display: block;
 	transform: scale(1);
 	transition: all ease 0.5s;
-	
+
+}
+img{
+	width: 300px;
+	height: 300px;
 }
 .con-img>li{
     margin: 5px;

@@ -44,6 +44,8 @@
 									<th>职位</th>
 									<th>入职时间</th>
 									<th>电话号码</th>
+									<th>个人简介</th>
+									<th>宣言</th>
 									<th>操作</th>
 								</tr>
 							</thead>
@@ -54,6 +56,8 @@
 									<td>[[${teacherList.getPosition()}]]</td>
 									<td>[[${#dates.format(teacherList.getComeTime(),'yyyy-MM-dd')}]]</td>
 									<td>[[${teacherList.getTelephoneNumber()}]]</td>
+									<td><p th:title="${teacherList.getBriefIntroduction()}">悬停查看</p></td>
+									<td><p th:title="${teacherList.getDeclaration()}">悬停查看</p></td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/teacher/toUpdateTeacher/}+${teacherList.getTeacherId()}">编辑</a>
 										<a class="btn btn-sm btn-danger"onclick="javascript:return drop();" th:href="@{/teacher/dropTeacher/}+${teacherList.getTeacherId()}">删除</a>

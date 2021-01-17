@@ -8,7 +8,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<title>班级管理</title>
+		<title>课程管理</title>
 		<!-- Bootstrap core CSS -->
 		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 		<link rel="stylesheet" th:href="@{/css/style1.css}">
@@ -25,35 +25,31 @@
 		<div class="container-fluid">
 			<div class="row">
 
-				<div th:replace="~{commons/commons::sidebar(active='classList.html')}"></div>
+				<div th:replace="~{commons/commons::sidebar(active='courseList.html')}"></div>
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-					<header>班级列表</header>
-					<h2><a class="btn btn-sm btn-success" th:href="@{/class/add}">添加课程</a></h2>
+					<header>课程列表</header>
+					<h2><a class="btn btn-sm btn-success" th:href="@{/course/add}">添加课程</a></h2>
 					<div class="table-responsive">
 						<table class="table table-striped table-sm">
 							<thead>
 								<tr>
 									<th>id</th>
 									<th>课程名</th>
-									<th>上课教室</th>
-									<th>开课时间</th>
-									<th>上课教师</th>
-									<th>上课时间</th>
+									<th>简介</th>
+									<th>详细介绍</th>
 									<th>操作</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="classList:${classList}">
-									<td ><a class="btn btn-sm btn-primary" th:href="@{/class/queryStudent/}+${classList.getClassId()}">[[${classList.getClassId()}]]</a></td>
-									<td>[[${classList.getClassName()}]]</td>
-									<td>[[${classList.getClassRoom()}]]</td>
-									<td>[[${#dates.format(classList.getClassTime(),'yyyy-MM-dd')}]]</td>
-									<td>[[${classList.getTeacherName()}]]</td>
-									<td th:title="${classList.getText()}">详情</td>
+								<tr th:each="course:${courseList}">
+									<td>[[${course.getCourseId()}]]</td>
+									<td>[[${course.getCourseName()}]]</td>
+									<td><p th:title="${course.getBriefIntroduction()}" style="width: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">[[${course.getBriefIntroduction()}]]</p></td>
+									<td ><p th:title="${course.getDetailedIntroduction()}" style="width: 200px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">[[${course.getDetailedIntroduction()}]]</p></td>
 									<td>
-										<a class="btn btn-sm btn-primary" th:href="@{/class/toUpdateClass/}+${classList.getClassId()}">编辑</a>
-										<a class="btn btn-sm btn-danger"onclick="javascript:return drop();" th:href="@{/class/dropClass/}+${classList.getClassId()}">删除</a>
+										<a class="btn btn-sm btn-primary" th:href="@{/course/update/}+${course.getCourseId()}">编辑</a>
+										<a class="btn btn-sm btn-danger"onclick="javascript:return drop();" th:href="@{/course/dropCourse/}+${course.getCourseId()}">删除</a>
 									</td>
 								</tr>
 							</tbody>
@@ -73,9 +69,6 @@
 
 		<!-- Icons -->
 		<script type="text/javascript" src="/js/feather.min.js"></script>
-		<script>
-			feather.replace()
-		</script>
 
 		<!-- Graphs -->
 		<script type="text/javascript" src="/js/Chart.min.js"></script>

@@ -6,6 +6,9 @@ spring:
   mvc:
     date:
     date-format: yyyy-MM-dd
+    hiddenmethod:
+      filter:
+        enabled: true
   datasource:
     username: root
     password: '08290516'

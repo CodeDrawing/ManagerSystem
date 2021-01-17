@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>修改班级</title>
+    <title>修改课程</title>
     <!-- Bootstrap core CSS -->
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/style1.css}">
@@ -26,34 +26,30 @@
 <div class="container-fluid">
     <div class="row">
 
-        <div th:replace="~{commons/commons::sidebar(active='classList.html')}"></div>
+        <div th:replace="~{commons/commons::sidebar(active='courseList.html')}"></div>
 
         <!--添加员工的表单-->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <form th:action="@{/class/updateClass}" method="post">
-                <input type="hidden" name="classId" th:value="${class.getClassId()}">
+            <form th:action="@{/course/updateCourse}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="CourseId" th:value="${courseInfo.getCourseId()}">
+                <div class="form-group">
+                    <label>更改课程宣传图</label>
+                    <img th:src="@{${courseInfo.getImage()}}"  class="img-thumbnail" style="width:30%;height: 30%">
+                    <input type="file" name="file" >
+                </div>
             <div class="form-group">
-                <label>课程名</label>
-                <input type="text" class="form-control" placeholder=""style="width: 35%" name="className" th:value="${class.getClassName()}">
+                <label>课程名</label>c
+                <input type="text" class="form-control"  style="width: 35%" name="courseName" th:value="${courseInfo.getCourseName()}">
             </div>
             <div class="form-group">
-                <label>上课教室</label>
-                <input type="text" class="form-control" placeholder=""style="width: 35%" name="classRoom" th:value="${class.getClassRoom()}">
-            </div>
-            <div class="form-group">
-                <label>开课日期</label>
-                <input type="date" class="form-control" placeholder=""style="width: 35%" name="classTime" th:value="${#dates.format(class.getClassTime(),'yyyy-MM-dd')}">
-            </div>
-            <div class="form-group">
-                <label>上课老师</label>
-                <select class="form-control" name="teacherId" style="width:35%">
-                    <option th:each="teacher:${teacherList}" th:text="${teacher.getTeacherName()}" th:value="${teacher.getTeacherId()}"></option>
-                </select>
+                <label>课程简介</label>
+                <input type="text" class="form-control"  style="width: 35%" name="briefIntroduction" th:value="${courseInfo.getBriefIntroduction()}">
             </div>
                 <div class="form-group">
-                    <label>上课时间</label>
-                    <input type="text" class="form-control" placeholder=""style="width: 35%" name="text" >
+                    <label>详细介绍</label>
+                    <textarea name="detailedIntroduction"    th:text="${courseInfo.getDetailedIntroduction()}" class="form-control" style="width: 65%"></textarea>
                 </div>
+
             <button type="submit" class="btn btn-primary" style="margin-left: 31%">提交</button>
             </form>
         </main>

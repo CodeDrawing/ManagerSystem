@@ -37,6 +37,6 @@ public class FileServiceImpl implements IFileService {
             e.printStackTrace();
         }
 //返回一个路径
-        return "/uploadFile/"+ fileName;
+        return "http://192.168.238.206/uploadFile/"+ fileName;
     }
 }

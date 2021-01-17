@@ -55,7 +55,6 @@ public class DangAnController {
         return "redirect:/dangAn/showDangAnForStudentId/"+dangAn.getStudentId();
     }
     @RequestMapping("/addImage")
-
     public String addImage(@RequestParam("file")MultipartFile file,DangAn dangAn){
         String s = iFileService.fileUpload(file);
         dangAn.setImage(s);

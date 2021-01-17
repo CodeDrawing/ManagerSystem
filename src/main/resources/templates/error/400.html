@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>页面丢失</title>
+  <title>错误的请求</title>
 
   <style type="text/css">
     body {
@@ -76,12 +76,12 @@
 <body>
 
 <div class="container">
-<img th:src="@{/img/能力风暴.jpg}" width="180" height="100">
+  <img th:src="@{/img/能力风暴.jpg}" width="180" height="100">
 
-  <h2>404</h2>
-  <h1>页面走丢了...</h1>
+  <h2>400</h2>
+  <h1>请求参数有误</h1>
 
-  <p>We’re sorry but it appears that we can’t find the page you were looking for. Usually this occurs because of a page that previously existed was removed or you’ve mistyped the address.</p>
+  <p>We’re sorry but something appears to be wrong with the request you made, please try again.</p>
 
   <span class="go-back"><a href="#" onClick="javascript :history.back(-1);">返回上一页</a></span>
 </div>

@@ -8,8 +8,8 @@
         select * from teacher
     </select>
     <insert id="addTeacher" parameterType="top.zwzx.managersystem.pojo.Teacher">
-        insert into teacher(teacherName,position,comeTime,telephoneNumber) values
-        (#{teacherName},#{position},#{comeTime},#{telephoneNumber})
+        insert into teacher(teacherName,position,comeTime,telephoneNumber,briefIntroduction,declaration,image) values
+        (#{teacherName},#{position},#{comeTime},#{telephoneNumber},#{briefIntroduction},#{declaration},#{image})
     </insert>
     <delete id="dropTeacher" parameterType="java.lang.Integer">
         delete from teacher where teacherId=#{id}
@@ -18,7 +18,10 @@
         select * from teacher where teacherId=#{id}
     </select>
     <update id="updateTeacher" parameterType="top.zwzx.managersystem.pojo.Teacher" >
-        update  teacher set teacherName=#{teacherName},position=#{position},comeTime=#{comeTime},telephoneNumber=#{telephoneNumber}
+        update  teacher set teacherName=#{teacherName},position=#{position},comeTime=#{comeTime},telephoneNumber=#{telephoneNumber},briefIntroduction=#{briefIntroduction},declaration=#{declaration}
+        <if test="image!=null">
+            ,image=#{image}
+        </if>
         where teacherId=#{teacherId}
     </update>
 </mapper>

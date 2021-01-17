@@ -97,7 +97,7 @@
             <div style="margin-left: 2%">
                 <ul class="con-img clear" >
                     <li th:each="imageStyle:${imageStyles}">
-                        <img th:src="@{${imageStyle.getImage()}}">
+                        <img th:title="${imageStyle.getDateTime()}" th:src="@{${imageStyle.getImage()}}">
                     </li>
                 </ul>
             </div>

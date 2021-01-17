@@ -58,8 +58,13 @@
         <div th:replace="~{commons/commons::sidebar(active='teacherList.html')}"></div>
         <!--添加员工的表单-->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <form th:action="@{/teacher/updateTeacher}" method="post">
+            <form th:action="@{/teacher/updateTeacher}" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="teacherId" th:value="${teacher.getTeacherId()}">
+                <div class="form-group">
+                    <label>更改教师头像</label>
+                    <img th:src="@{${teacher.getImage()}}"  class="img-thumbnail" style="width:10%;height: 10%">
+                    <input type="file" name="file" >
+                </div>
             <div class="form-group">
                 <label>教师姓名</label>
                 <input type="text" class="form-control"style="width: 35%"  name="teacherName" th:value="${teacher.getTeacherName()}">
@@ -76,6 +81,14 @@
                     <label>电话号码</label>
                     <input type="text"  class="form-control" style="width: 35%"name="telephoneNumber" th:value="${teacher.getTelephoneNumber()}">
             </div>
+                <div class="form-group">
+                    <label>个人简介</label>
+                    <input type="text" class="form-control"style="width: 35%"  name="briefIntroduction" th:value="${teacher.getBriefIntroduction()}">
+                </div>
+                <div class="form-group">
+                    <label>个人宣言</label>
+                    <input type="text" class="form-control"style="width: 35%"  name="declaration" th:value="${teacher.getDeclaration()}">
+                </div>
             <button type="submit" class="btn btn-primary"style="margin-left: 31%">提交</button>
             </form>
 

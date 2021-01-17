@@ -15,11 +15,13 @@ import java.util.Date;
 @NoArgsConstructor
 public class Teacher {
 
-    private int teacherId;
+    private Integer teacherId;
     private String teacherName;
     private String position;//职位
     private Date comeTime;
     private String telephoneNumber;
-
+    private String briefIntroduction;//简介
+    private String declaration;//宣言
+    private String image;//照片
 
 }

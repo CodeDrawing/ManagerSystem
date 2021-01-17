@@ -9,10 +9,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>修改班级</title>
+    <title>添加课程</title>
     <!-- Bootstrap core CSS -->
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/style1.css}">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.css">
 
     <!-- Custom styles for this template -->
@@ -21,40 +22,41 @@
 </head>
 
 <body>
+<!--<div th:replace="~{commons/commons::topbar}"></div>-->
 
+<!--</div>-->
 
 <div class="container-fluid">
     <div class="row">
 
-        <div th:replace="~{commons/commons::sidebar(active='classList.html')}"></div>
+        <div th:replace="~{commons/commons::sidebar(active='courseList.html')}"></div>
 
         <!--添加员工的表单-->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-            <form th:action="@{/class/updateClass}" method="post">
-                <input type="hidden" name="classId" th:value="${class.getClassId()}">
+<!--            <form th:action="@{/student/uploadStudentPhoto}" method="post" enctype="multipart/form-data">-->
+<!--                <div class="form-group">-->
+<!--                    <input type="file" name="studentPhoto" value="选择学生照片">-->
+<!--                    <input type="submit"  value="上传图片">-->
+<!--                </div>-->
+<!--            </form>-->
+            <form th:action="@{/course/addCourse}" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label>课程名</label>
-                <input type="text" class="form-control" placeholder=""style="width: 35%" name="className" th:value="${class.getClassName()}">
+                <label>课程宣传图</label>
+                    <input type="file" name="file "  value="选择宣传图" style="width:65%">
             </div>
             <div class="form-group">
-                <label>上课教室</label>
-                <input type="text" class="form-control" placeholder=""style="width: 35%" name="classRoom" th:value="${class.getClassRoom()}">
+                <input type="text" class="form-control" placeholder="请输入课程名称" name="courseName" style="width:65%">
             </div>
-            <div class="form-group">
-                <label>开课日期</label>
-                <input type="date" class="form-control" placeholder=""style="width: 35%" name="classTime" th:value="${#dates.format(class.getClassTime(),'yyyy-MM-dd')}">
+            <div class="form-group" >
+                <input type="text" class="form-control" placeholder="请输入简介" name="briefIntroduction" style="width: 65%">
             </div>
-            <div class="form-group">
-                <label>上课老师</label>
-                <select class="form-control" name="teacherId" style="width:35%">
-                    <option th:each="teacher:${teacherList}" th:text="${teacher.getTeacherName()}" th:value="${teacher.getTeacherId()}"></option>
-                </select>
-            </div>
-                <div class="form-group">
-                    <label>上课时间</label>
-                    <input type="text" class="form-control" placeholder=""style="width: 35%" name="text" >
+                <div class="form-group" >
+                    <label>课程详细描述</label>
+                <textarea name="detailedIntroduction"  class="form-control" style="width: 65%">
+                </textarea>
                 </div>
-            <button type="submit" class="btn btn-primary" style="margin-left: 31%">提交</button>
+
+            <button type="submit" class="btn btn-primary" style="margin-left: 58%">添加</button>
             </form>
         </main>
     </div>
@@ -66,7 +68,9 @@
 <script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
 <script type="text/javascript" src="/js/popper.min.js"></script>
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 
 <!-- Icons -->
 <script type="text/javascript" src="/js/feather.min.js"></script>

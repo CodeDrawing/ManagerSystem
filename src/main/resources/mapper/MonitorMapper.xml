@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zwzx.managersystem.mapper.MonitorMapper">
+<select id="queryAllMonitorLog" resultType="top.zwzx.managersystem.pojo.Monitor">
+    select * from monitor;
+</select>
+    <insert id="addMonitor" parameterType="top.zwzx.managersystem.pojo.Monitor">
+        insert into monitor(worker,createTime,request,operationContent) value (#{worker},#{createTime},#{request},#{operationContent})
+    </insert>
+</mapper>

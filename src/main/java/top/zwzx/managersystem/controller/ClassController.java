@@ -6,15 +6,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import top.zwzx.managersystem.pojo.ClassRecord;
-import top.zwzx.managersystem.pojo.Student;
-import top.zwzx.managersystem.pojo.Teacher;
-import top.zwzx.managersystem.pojo.classClass;
+import top.zwzx.managersystem.pojo.*;
 import top.zwzx.managersystem.service.IClassService;
+import top.zwzx.managersystem.service.IMonitorService;
 import top.zwzx.managersystem.service.IStudentService;
 import top.zwzx.managersystem.service.ITeacherService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +24,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/class")
 public class ClassController {
-
+@Autowired
+    IMonitorService iMonitorService;
     @Autowired
     IClassService iClassService;
     @Autowired
@@ -34,8 +34,18 @@ public class ClassController {
     ITeacherService iTeacherService;
 
     @RequestMapping("/showAllClass")
-    public String showAllClass(Model model){
+    public String showAllClass(Model model, HttpSession request){
         List<classClass> classClasses = iClassService.showAllClass();
+//        日志处理
+        String monitorUser=(String)request.getAttribute("loginUser");
+        Monitor monitor = new Monitor();
+        monitor.setCreateTime(new Date());
+        monitor.setWorker(monitorUser);
+        monitor.setOperationContent("查询了所有学生信息");
+        monitor.setRequest("/class/showAllClass");
+        iMonitorService.addMonitor(monitor);
+
+
         model.addAttribute("classList",classClasses);
         return "crud/classList";
     }

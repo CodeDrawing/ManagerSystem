@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zwzx.managersystem.mapper.CourseMapper">
+<select id="showAllCourse" resultType="top.zwzx.managersystem.pojo.Course">
+    select * from course;
+</select>
+    <delete id="dropCourse" parameterType="java.lang.Integer">
+        delete from course where courseId=#{courseId}
+    </delete>
+    <insert id="insertCourse" parameterType="top.zwzx.managersystem.pojo.Course">
+        insert into course(briefIntroduction,image,detailedIntroduction,courseName) value (#{briefIntroduction},#{image},#{detailedIntroduction},#{courseName})
+    </insert>
+    <select id="showOneCourse" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.Course">
+        select * from course where courseId=#{id}
+    </select>
+    <update id="updateCourse" parameterType="top.zwzx.managersystem.pojo.Course">
+        update course set briefIntroduction=#{briefIntroduction},detailedIntroduction=#{detailedIntroduction},courseName=#{courseName}
+        <if test="image!=null">
+            ,image=#{image}
+        </if>
+        where courseId=#{courseId}
+    </update>
+</mapper>

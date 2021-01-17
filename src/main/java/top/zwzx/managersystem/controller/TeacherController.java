@@ -3,9 +3,10 @@ package top.zwzx.managersystem.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import top.zwzx.managersystem.pojo.Teacher;
+import top.zwzx.managersystem.service.IFileService;
 import top.zwzx.managersystem.service.ITeacherService;
 import top.zwzx.managersystem.service.IUserService;
 
@@ -21,12 +22,21 @@ public class TeacherController {
 
     @Autowired
     ITeacherService iTeacherService;
+    @Autowired
+    IFileService iFileService;
 
 @RequestMapping("/showAllTeacher")
     public String showAllTeacher(Model model){
         List<Teacher> teachers = iTeacherService.showAllTeacher();
         model.addAttribute("teacherList",teachers);
         return "crud/teacherList";
+    }
+    @RequestMapping("/showAllTeacherApp")
+    @ResponseBody
+    @CrossOrigin
+    public List<Teacher> showAllTeacherApp(){
+        List<Teacher> teachers = iTeacherService.showAllTeacher();
+        return teachers;
     }
     @RequestMapping("/toAddTeacher")
     public String toAddTeacher(){
@@ -45,14 +55,27 @@ public class TeacherController {
     @RequestMapping("/toUpdateTeacher/{id}")
     public String toUpdateTeacher(@PathVariable("id")Integer id,Model model){
         Teacher teacher1 = iTeacherService.queryOneTeacher(id);
-        System.out.println(teacher1);
         model.addAttribute("teacher",teacher1);
         return "crud/updateTeacher";
     }
     @RequestMapping("/updateTeacher")
-    public String updateTeacher(Teacher teacher){
+    public String updateTeacher(@RequestParam("file") MultipartFile file, Teacher teacher){
+    if(file.isEmpty()) {
         iTeacherService.updateTeacher(teacher);
+    }else {
+        String s = iFileService.fileUpload(file);
+        teacher.setImage(s);
+        iTeacherService.updateTeacher(teacher);
+    }
         return "redirect:/teacher/showAllTeacher";
+    }
 
+//    官网获取教师的信息并展示
+    @RequestMapping("/showOneTeacherApp/{id}")
+    @ResponseBody
+    @CrossOrigin
+    public Teacher showOneTeacherApp(@PathVariable("id")Integer id){
+        Teacher teacher = iTeacherService.queryOneTeacher(id);
+        return teacher;
     }
 }

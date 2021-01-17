@@ -34,7 +34,7 @@
                 <input type="hidden" name="studentId" th:value="${student.getStudentId()}">
                 <div class="form-group">
                     <label>更改学生头像</label>
-                    <img th:src="@{${student.getStudentPhotoPath()}}" alt="..." class="img-thumbnail" style="width:10%;height: 10%">
+                    <img th:src="@{${student.getStudentPhotoPath()}}"  class="img-thumbnail" style="width:10%;height: 10%">
                     <input type="file" name="studentPhoto" >
                 </div>
             <div class="form-group">
