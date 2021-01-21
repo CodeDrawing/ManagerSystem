@@ -20,6 +20,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/apply")
+@CrossOrigin
 public class ApplyCourseController {
     @Autowired
     IApplyCourseService iApplyCourseService;
@@ -27,17 +28,16 @@ public class ApplyCourseController {
     @RequestMapping("/applyCourseApp")
     @ResponseBody
 //    跨域问题，导致一直不能返回ajax的success function（）{}
-    @CrossOrigin
+
     public Map applyCourseApp(ApplyCourse applyCourse){
         Map<Object, Object> map = new HashMap<>();
         if(applyCourse.getApplyCourse().isEmpty()||applyCourse.getStudentName().isEmpty()||
         applyCourse.getComeOnTime().isEmpty()||applyCourse.getTelephone().isEmpty()){
-            map.put("result",4);
+            map.put("result","4");
             return map;
         }else {
-            System.out.println(applyCourse.getStudentName());
             iApplyCourseService.addApplyCourse(applyCourse);
-            map.put("result",200);
+            map.put("result","200");
             return map;
         }
     }

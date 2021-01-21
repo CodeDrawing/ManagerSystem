@@ -16,5 +16,6 @@ public class Parents {
     private String parentsName;
     private Integer studentId;
     private String telephoneNumber;
-    private String relationshipWithStudent;
+    private String email;
+    private String password;
 }
