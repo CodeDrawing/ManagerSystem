@@ -29,7 +29,7 @@ public class FileController {
     IStudentService iStudentService;
     //上传图片
     @PostMapping(value = "/fileUpload")
-    public String fileUpload(@RequestParam(value = "file") MultipartFile file, Model model, HttpServletRequest request) {
+    public String fileUpload(@RequestParam(value = "file") MultipartFile file, Model model, HttpServletRequest request) throws IOException {
         String s = iFileService.fileUpload(file);
         model.addAttribute("file",s);
         return "11";

@@ -10,6 +10,7 @@ import top.zwzx.managersystem.service.IFileService;
 import top.zwzx.managersystem.service.ITeacherService;
 import top.zwzx.managersystem.service.IUserService;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -59,7 +60,7 @@ public class TeacherController {
         return "crud/updateTeacher";
     }
     @RequestMapping("/updateTeacher")
-    public String updateTeacher(@RequestParam("file") MultipartFile file, Teacher teacher){
+    public String updateTeacher(@RequestParam("file") MultipartFile file, Teacher teacher) throws IOException {
     if(file.isEmpty()) {
         iTeacherService.updateTeacher(teacher);
     }else {

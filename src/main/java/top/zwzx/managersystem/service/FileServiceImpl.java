@@ -1,5 +1,6 @@
 package top.zwzx.managersystem.service;
 
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +18,7 @@ import java.util.UUID;
 @Service
 public class FileServiceImpl implements IFileService {
     @Override
-    public String fileUpload(MultipartFile file) {
+    public String fileUpload(MultipartFile file) throws IOException {
         if (file.isEmpty()) {
             System.out.println("文件为空");
         }
@@ -33,10 +34,16 @@ public class FileServiceImpl implements IFileService {
         }
         try {
             file.transferTo(dest);
+//            压缩图片
+            Thumbnails.of(dest)
+                    .scale(1f)
+                    .outputQuality(0.25f)
+                    .outputFormat("jpg")
+                    .toFile(dest);
         } catch (IOException e) {
             e.printStackTrace();
         }
 //返回一个路径
-        return "http://192.168.238.206/uploadFile/"+ fileName;
+        return "/uploadFile/"+ fileName;
     }
 }

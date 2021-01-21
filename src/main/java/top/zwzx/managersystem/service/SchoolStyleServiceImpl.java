@@ -26,4 +26,10 @@ public class SchoolStyleServiceImpl implements ISchoolStyleService {
     public void addSchoolImage( SchoolStyle schoolStyle) {
         schoolStyleMapper.addSchoolImage(schoolStyle);
     }
+
+    @Override
+    public SchoolStyle showOneBigImage(Integer id) {
+        SchoolStyle schoolStyle = schoolStyleMapper.showOneBigImage(id);
+        return schoolStyle;
+    }
 }

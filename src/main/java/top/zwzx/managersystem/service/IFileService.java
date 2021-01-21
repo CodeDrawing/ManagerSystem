@@ -15,5 +15,5 @@ import java.util.UUID;
  */
 //插入图片
 public interface IFileService {
-    public String fileUpload(MultipartFile file);
+    public String fileUpload(MultipartFile file) throws IOException;
 }

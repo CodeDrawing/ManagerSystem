@@ -9,5 +9,8 @@
     <insert id="addSchoolImage" parameterType="top.zwzx.managersystem.pojo.SchoolStyle">
         insert into schoolStyle(createUser,createTime,image) value (#{createUser},#{createTime},#{image})
     </insert>
+    <select id="showOneBigImage" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.SchoolStyle">
+        select * from schoolStyle where imageId=#{id}
+    </select>
 
 </mapper>

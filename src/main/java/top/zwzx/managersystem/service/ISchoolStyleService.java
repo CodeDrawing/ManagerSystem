@@ -12,5 +12,6 @@ import java.util.List;
 public interface ISchoolStyleService {
     public List<SchoolStyle> queryAllSchoolStyle();
     public void addSchoolImage( SchoolStyle schoolStyle);
+    SchoolStyle showOneBigImage(Integer id);
 
 }

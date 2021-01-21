@@ -49,7 +49,7 @@ public class StudentController {
     }
 
     @RequestMapping("/addStudent")
-    public String addStudnet(@RequestParam(value = "studentPhoto") MultipartFile file,Student student) {
+    public String addStudnet(@RequestParam(value = "studentPhoto") MultipartFile file,Student student) throws IOException {
         String s = iFileService.fileUpload(file);
         System.out.println(s);
         student.setStudentPhotoPath(s);
@@ -71,7 +71,7 @@ public class StudentController {
     }
 
     @RequestMapping("/updateStudent")
-    public String updateStudent(@RequestParam("studentPhoto")MultipartFile file, Student student){
+    public String updateStudent(@RequestParam("studentPhoto")MultipartFile file, Student student) throws IOException {
         if(file.isEmpty()){
             iStudentService.updateStudent(student);
         }else {

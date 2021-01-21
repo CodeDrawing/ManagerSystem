@@ -12,6 +12,7 @@ import top.zwzx.managersystem.service.IFileService;
 import top.zwzx.managersystem.service.ISchoolStyleService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -43,12 +44,20 @@ public class SchoolStyleController {
         return schoolStyle;
     }
     @RequestMapping("/addSchoolImage")
-    public String addSchoolImage(@RequestParam("file") MultipartFile file, SchoolStyle schoolStyle, HttpServletRequest request){
+    public String addSchoolImage(@RequestParam("file") MultipartFile file, SchoolStyle schoolStyle, HttpServletRequest request) throws IOException {
         String s = iFileService.fileUpload(file);
         schoolStyle.setImage(s);
         schoolStyle.setCreateTime(new Date());
         schoolStyle.setCreateUser((String) request.getSession().getAttribute("loginUser"));
         iSchoolStyleService.addSchoolImage(schoolStyle);
         return "redirect:/schoolStyle/showAllSchoolImage";
+    }
+    @RequestMapping("/showOneBigImageApp/{id}")
+    @ResponseBody
+    @CrossOrigin
+    public SchoolStyle schoolStyle(@PathVariable("id")Integer id){
+        SchoolStyle schoolStyle = iSchoolStyleService.showOneBigImage(id);
+        return schoolStyle;
+
     }
 }

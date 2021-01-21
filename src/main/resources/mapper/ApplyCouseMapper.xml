@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.zwzx.managersystem.mapper.ApplyCourseMapper">
+    <insert id="addApplyCourse" parameterType="top.zwzx.managersystem.pojo.ApplyCourse" >
+        insert into applycourse(applyId,studentName,telephone,weChar,applyCourse,comeOnTime,introducer) value
+        (#{applyId},#{studentName},#{telephone},#{weChar},#{applyCourse},#{comeOnTime},#{introducer})
+    </insert>
+    <select id="showAllApplyCourse" resultType="top.zwzx.managersystem.pojo.ApplyCourse">
+        select * from applycourse;
+    </select>
+
+</mapper>

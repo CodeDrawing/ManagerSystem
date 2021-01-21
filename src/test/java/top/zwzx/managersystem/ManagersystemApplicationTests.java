@@ -7,6 +7,8 @@ import top.zwzx.managersystem.pojo.Student;
 import top.zwzx.managersystem.service.IStudentService;
 
 import javax.sql.DataSource;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -57,6 +59,11 @@ class ManagersystemApplicationTests {
         student.setStudentName("张薇");
         student.setTelephoneNumber("1231241231");
         iStudentService.addStudent(student);
+    }
+    @Test
+    void text4() throws UnknownHostException {
+        InetAddress addr = InetAddress.getLocalHost();
+        System.out.println("Local HostAddress: "+addr.getHostAddress());
     }
 
 }

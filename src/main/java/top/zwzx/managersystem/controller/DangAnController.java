@@ -14,6 +14,7 @@ import top.zwzx.managersystem.service.IDangAnSerivce;
 import top.zwzx.managersystem.service.IFileService;
 import top.zwzx.managersystem.service.IStudentService;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class DangAnController {
         return "redirect:/dangAn/showDangAnForStudentId/"+dangAn.getStudentId();
     }
     @RequestMapping("/addImage")
-    public String addImage(@RequestParam("file")MultipartFile file,DangAn dangAn){
+    public String addImage(@RequestParam("file")MultipartFile file,DangAn dangAn) throws IOException {
         String s = iFileService.fileUpload(file);
         dangAn.setImage(s);
         dangAn.setDateTime(new Date());

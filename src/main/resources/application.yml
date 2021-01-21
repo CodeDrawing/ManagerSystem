@@ -47,3 +47,6 @@ file.upload.path: G://uploadFile/
 file.upload.path.relative: /uploadFile/**
 server:
   port: 80
+  tomcat:
+    max-swallow-size: 50MB
+    max-connections: 3000

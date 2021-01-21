@@ -15,4 +15,5 @@ import java.util.List;
 public interface SchoolStyleMapper {
     public List<SchoolStyle> queryAllSchoolStyle();
     public void addSchoolImage(SchoolStyle schoolStyle);
+    SchoolStyle showOneBigImage(Integer id);
 }

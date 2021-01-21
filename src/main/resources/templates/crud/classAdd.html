@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>新增班级</title>
     <!-- Bootstrap core CSS -->
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 
@@ -33,7 +33,7 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <form th:action="@{/class/addClass}" method="post">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="请输入课程名"style="width: 65%" name="className">
+                <input type="text" class="form-control" placeholder="请输入班级名"style="width: 65%" name="className">
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="请输入上课教室"style="width: 65%" name="classRoom">
