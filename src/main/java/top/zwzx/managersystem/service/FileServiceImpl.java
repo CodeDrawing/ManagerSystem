@@ -25,7 +25,7 @@ public class FileServiceImpl implements IFileService {
         String fileName = file.getOriginalFilename();  // 文件名
         String suffixName = fileName.substring(fileName.lastIndexOf("."));  // 后缀名
 //        String filePath = "\\uploadFile\\"; // 上传后的路径
-        String filePath = "G://uploadFile/"; // 上传后的路径
+        String filePath = "/Volumes/studentText/uploadFile/"; // 上传后的路径
 //        String filePath = request.getSession().getServletContext().getRealPath("F://代码//ManagerSystem//src//main//resources//static//uploadFiles//");
         fileName = UUID.randomUUID() + suffixName; // 新文件名
         File dest = new File(filePath + fileName);
@@ -44,6 +44,6 @@ public class FileServiceImpl implements IFileService {
             e.printStackTrace();
         }
 //返回一个路径
-        return "/uploadFile/"+ fileName;
+        return "/studentText/uploadFile/"+ fileName;
     }
 }

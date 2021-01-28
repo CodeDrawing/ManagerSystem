@@ -15,7 +15,9 @@ public class Parents {
     private Integer parentsId;
     private String parentsName;
     private Integer studentId;
+    private String studentName;
     private String telephoneNumber;
     private String email;
     private String password;
+    private String finalPassword;
 }

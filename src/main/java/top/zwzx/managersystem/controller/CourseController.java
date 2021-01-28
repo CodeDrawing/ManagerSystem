@@ -44,11 +44,11 @@ public class CourseController {
         return courseList;
     }
     @RequestMapping("/showOneCourseApp/{id}")
-    @ResponseBody
     @CrossOrigin
-     public Course showOneCourseApp(@PathVariable("id")Integer courseId){
-        Course Course = iCourseService.showOneCourse(courseId);
-        return Course;
+     public String showOneCourseApp(@PathVariable("id")Integer courseId,Model model){
+        Course course = iCourseService.showOneCourse(courseId);
+        model.addAttribute("course",course);
+        return "/school/courseInfo";
     }
 
     @RequestMapping("/dropCourse/{courseId}")

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="nlfbSystem@localhost [2]" uuid="628f87ed-4447-4073-8e5c-b20b148068b8">
+    <data-source source="LOCAL" name="nlfbsystem@localhost" uuid="80c700ed-a1b0-4128-9d95-82e2435acc02">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/nlfbSystem</jdbc-url>
-      <driver-properties>
-        <property name="serverTimezone" value="UTC" />
-      </driver-properties>
+      <jdbc-url>jdbc:mysql://localhost:3306/nlfbsystem</jdbc-url>
     </data-source>
   </component>
 </project>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www/thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 导入css -->
+    <link rel="stylesheet" th:href="@{/css/layui.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/layer.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/loader.css}" />
+    <script th:src="@{https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js}"></script>
+    <script th:src="@{/js/layui.js}"></script>
+    <script th:src="@{/js/layer.js}"></script>
+<!--    <script th:src="@{https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js}"></script>-->
+<!--    <script th:src="@{/js/jquery-3.2.1.slim.min.js}"></script>-->
+<!--    <script th:src="@{/js/jquery-3.5.1.js}"></script>-->
+    <title>师资团队</title>
+  </head>
+  <body>
+    <!--  -->
+    <div class="layui-container">
+      <div class="layui-row teacherDiv">
+        <div class="layui-col-xs6 layui-col-xs-offset4">
+          <div class="fontTeacherList">
+            师资团队
+          </div>
+        </div>
+      </div>
+
+      <div class="layui-row teacherDiv">
+        <div class="layui-col-xs12">
+        <span th:each="teacher:${teacherList}">
+          <a> <img th:src="@{${teacher.getImage()}}" th:id="${teacher.getTeacherId()}"  style="width: 47%; height: 70%;margin-top: 4%;margin-left:2%" /></a>
+        </span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 加载动画实现 -->
+    <!--页面加载end-->
+
+    <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+      <div class="load_title">加载中</div>
+    </div>
+
+    <script type="text/javascript">
+      $(window).load(function () {
+        $("body").addClass("loaded").Chameleon({
+          current_item: "hoveralls",
+          json_url: "../Envato/items.json",
+        });
+        $("#loader-wrapper .load_title").remove();
+      });
+    </script>
+
+    <script>
+      // 获取点击元素的ID
+    $(document).click(function (e) {
+    var id=$(e.target).attr("id")
+    var layer=layui.layer;
+      $.ajax({
+        //要点 url地址一定要写主机ip不能用localhost或者127。0。0。1
+        url:"http://192.168.0.102/teacher/showOneTeacherApp/"+id,
+        type:"get",
+        success:function(info){
+          layer.open({
+            type:0,
+            area:['70%'],
+            title:info.teacherName,
+            content:"<p>现任职位："+info.position+"</p><p style='margin-top:2%'>个人简介："+info.briefIntroduction+"</p><p style='margin-top:2%'>教学宣言："+info.declaration+"</p>"
+          })
+        }
+      })
+    })
+    </script>
+  </body>
+</html>

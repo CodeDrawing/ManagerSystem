@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www/thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/layui-v2.5.7/layui/css/layui.css}" />
+    <link rel="stylesheet" th:href="@{/layer-v3.2.0/layer/theme/default/layer.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/loader.css}" />
+    <title>注册账号</title>
+</head>
+<body>
+    <!-- 大框架 -->
+    <div class="layui-container">
+        <div class="layui-row">
+          <div class="layui-col-xs12" style=" margin-top: 10%">
+              <h2 style="margin-left: 10%;margin-bottom:5% ;">欢迎登陆能力风暴家长中心</h2>
+            <form class="layui-form layui-anim layui-anim-upbit" style="margin-right: 10%;margin-left: -10%;" action="" id="form1">
+                <!-- 用户名 -->            
+              <div class="layui-form-item">
+                <label class="layui-form-label">家长姓名：</label>
+                <div class="layui-input-block">
+                  <input
+                    type="text"
+                    name="parentsName"
+                    lay-verify="required"
+                    placeholder="请输入姓名"
+                    class="layui-input"
+                  />         
+                </div>
+              </div>
+              <!-- 电话 -->
+              <div class="layui-form-item">
+                  <label class="layui-form-label">手机：</label>
+                  <div class="layui-input-block">
+                    <input
+                      type=""
+                      name="telephoneNumber"
+                      lay-verify="required|phone"
+                      placeholder="请输入手机号"
+                      class="layui-input"
+                    />
+                  </div>
+                </div>
+              <!-- 邮箱 -->
+              <div class="layui-form-item">
+                <label class="layui-form-label">邮箱地址：</label>
+                <div class="layui-input-block">
+                  <input
+                    type="text"
+                    name="email"
+                    lay-verify="required|email"
+                    placeholder="请输入邮箱地址（可选）"
+                    class="layui-input"
+                  />
+                </div>
+              </div>
+              <!-- 密码 -->
+              <div class="layui-form-item">
+              <label class="layui-form-label">密码：</label>
+              <div class="layui-input-block">
+              <input
+              type="password"
+              name="password"
+              required
+              lay-verify="required"
+              placeholder="请设置密码"
+              class="layui-input"
+              />
+              </div>
+              </div>
+              <!-- 确认密码 -->
+              <div class="layui-form-item">
+                <label class="layui-form-label">确认密码</label>
+                <div class="layui-input-block">
+                <input
+                type="password"
+                name="finalPassword"
+                lay-verify="required|confirmPass"
+                placeholder="请确认密码"
+                class="layui-input"
+                />
+                </div>
+              </div>
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">验证码</label>
+                    <div class="layui-input-block"  sytle="width:30%">
+                        <input
+                                sytle="width:30%"
+                                type="text"
+                                name="kaptcha"
+                                id="kaptcha"
+                                lay-verify="required|confirmPass"
+                                placeholder="请输入验证码"
+                                class="layui-input"
+                        />
+                        <img th:src="@{/parents/kaptcha}" id="kaptchaImg" style="width:100px;height:40px;" class="mr-2"/>
+                        <a href="javascript:refresh_kaptcha();" class="font-size-12 align-bottom">刷新验证码</a>
+                    </div>
+
+                </div>
+
+                <!-- 提交按钮 -->
+                <div class="layui-form-item">
+                  <div class="layui-input-block">
+                    <button class="layui-btn" id="submit" type="button" style="background-color:#192352" lay-submit lay-filter="formDemo"  onclick="commit()" disabled>立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <div class="layui-input-block">
+                    <a th:href="@{login.html}">以有账号？点击登陆</a>
+                  </div>
+                </div>
+            </form>
+          </div>
+          <div   >
+              <h5 style="text-align: center;">@内江能力风暴</h5>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+        <div class="load_title">加载中</div>
+      </div>
+    <script th:src="@{/js/jquery-1.11.3.min.js}"></script>
+    <script th:src="@{/js/layui.js}"></script>
+<!--    <script th:src="@{/layui-v2.5.7/layui/layui.js}"></script>-->
+    <script th:src="@{/layer-v3.2.0/layer/layer.js}"></script>
+    <script>
+        $(window).load(function () {
+          $("body").addClass("loaded").Chameleon({
+            current_item: "hoveralls",
+            json_url: "../Envato/items.json",
+          });
+          $("#loader-wrapper .load_title").remove();
+        });
+      </script>
+    <script>
+  function commit() {
+      var path = "http://192.168.0.102/parents/kaptcha?p=" + Math.random();
+    $.ajax({
+      type:"post",
+      dataType:"json",
+        async:false,
+      url:"http://192.168.0.102/parents/registerParents",
+      data:$("#form1").serialize(),
+      success:function (data){
+        if(data.result==200){
+          layer.msg("注册成功！绑定学生请联系老师！",{icon: 1,time:5000, shade:0.4})
+            $("#kaptchaImg").attr("src", path);
+            $("#submit").attr("disabled",true)
+            window.location.href("/school/index")
+        }else if(data.result==4){
+            $("#kaptchaImg").attr("src", path);
+          layer.msg("服务器出错，请稍后重试！",{icon: 2,time:2000, shade:0.4})
+        }else if(data.result==5){
+            $("#kaptchaImg").attr("src", path);
+            layer.msg("必选项不能为空！",{icon: 0,time:2000, shade:0.4})
+        }else if(data.result==6){
+            $("#kaptchaImg").attr("src", path);
+            layer.msg("两次密码不一致!",{icon: 0,time:2000, shade:0.4})
+        }else if(data.result==1){
+            $("#kaptchaImg").attr("src", path);
+            layer.msg("输入的手机号已存在，请登陆!",{icon: 0,time:2000, shade:0.4})
+        }else{
+            $("#kaptchaImg").attr("src", path);
+          layer.msg("注册失败！请重试！",{icon: 0,time:2000, shade:0.4})
+        }
+      }
+    });
+      return false;
+    }
+</script>
+    <script>
+        function refresh_kaptcha() {
+            var path = "http://192.168.0.102/parents/kaptcha?p=" + Math.random();
+            $("#kaptchaImg").attr("src", path);
+        }
+    </script>
+<!--    ajax请求，验证码失去焦点，发送请求-->
+<script>
+    $("#kaptcha").blur(function() {
+        var kaptcha = $("#kaptcha").val();
+        console.log(kaptcha)
+//ajax
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            url : "/parents/verificationKaptcha",
+            data : {
+                kaptcha : kaptcha
+            },
+            success : function(data) {
+                if (data.result==4) {
+                   layer.msg("验证码错误！")
+                }else{
+                    layer.msg("验证码正确，可以提交信息！")
+                    $("#submit").attr("disabled",false)
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

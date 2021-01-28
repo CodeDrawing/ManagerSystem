@@ -38,6 +38,10 @@
                 th:href="@{/student/showAllStudent}"
         ><i class="fas fa-stream"></i>学生管理</a></li>
         <li>        <a
+                th:class="${active=='parentsList.html'?'nav-link active':'nav-link'}"
+                th:href="@{/parents/showAllParents}"
+        ><i class="fas fa-stream"></i>家长管理</a></li>
+        <li>        <a
                 th:class="${active=='salaryList.html'?'nav-link active':'nav-link'}"
                 th:href="@{/salary/showAllSalary}"
         ><i class="fas fa-calendar-week"></i>工资管理</a></li>
@@ -57,6 +61,10 @@
                 th:class="${active=='showAllApplyCourse.html'?'nav-link active':'nav-link'}"
                 th:href="@{/apply/showAllApplyCourse}"
         ><i class="far fa-question-circle"></i>试听课管理</a></li>
+        <li>        <a
+                th:class="${active=='school.html'?'nav-link active':'nav-link'}"
+                th:href="@{/school/index}"
+        ><i class="far fa-question-circle"></i>前端页面</a></li>
     </ul>
 </div>
 

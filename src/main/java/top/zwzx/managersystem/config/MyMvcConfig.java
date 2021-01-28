@@ -29,15 +29,15 @@ public class MyMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/index.html","/","/user/login","/css/**","/img/**","/js/**","/uploadFile/**",
+        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/index.html","/","/layer-v3.2.0/**","/layui-v2.5.7/**","/user/login","/css/**","/img/**","/js/**","/studentText/uploadFile/**",
                 "/schoolStyle/showAllSchoolImageApp","/teacher/showAllTeacherApp","/teacher/showOneTeacherApp/**","/course/showAllCourseApp","/course/showOneCourseApp/**","/apply/applyCourseApp",
-                "/parents/registerParents","/parents/loginSFC");
+                "/parents/kaptcha","/parents/verificationKaptcha","/parents/registerParents","/parents/loginSFC","/school/**");
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/uploadFile/**").
-                addResourceLocations("file:/"+"G://uploadFile/");
+        registry.addResourceHandler("/studentText/uploadFile/**").
+                addResourceLocations("file:/"+"Volumes/studentText/uploadFile/");
     }
 }
 

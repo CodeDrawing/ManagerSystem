@@ -1,0 +1,12 @@
+.mapdiv {
+  border-radius: 30px;
+  margin: 4% 2%;
+}
+.textAddress {
+  font-size: 18px;
+}
+body{
+  
+  width: 100%;
+  height: 100%;
+}

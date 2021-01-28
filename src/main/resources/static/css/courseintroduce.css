@@ -1,0 +1,32 @@
+.courseName {
+  width: 100%;
+  margin-top: 4%;
+  margin-left: 1%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: red;
+  font-size: larger;
+}
+.briefIntroduction{
+  width: 70%;
+  display: -webkit-box;     
+  -webkit-box-orient: vertical;    
+  -webkit-line-clamp: 3;    
+  overflow: hidden;
+  margin-top:50px;
+}
+.big{
+width: auto; 
+height: 18%;
+margin-top: 2%;
+padding:1%;
+box-shadow:4px 4px 5px 0px #888888
+}
+.one{
+width:30%;
+height:140px;
+float: right;
+display: flex;
+flex-direction: column;
+}

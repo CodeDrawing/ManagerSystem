@@ -11,5 +11,10 @@ import java.util.List;
 public interface IParentsService {
     int registerParents(Parents parents);
     List<Parents> loginSFCByTelephoneNumber(String username, String password);
+    List<Parents> showAllParentsList();
+    void dropParents(Integer id);
+    Parents showOneParents(Integer id);
+    void updateParents(Parents parents);
+    List<Parents> showOneParentsByTelephoneNumber(String telephoneNumber);
 
 }

@@ -32,13 +32,7 @@ public class TeacherController {
         model.addAttribute("teacherList",teachers);
         return "crud/teacherList";
     }
-    @RequestMapping("/showAllTeacherApp")
-    @ResponseBody
-    @CrossOrigin
-    public List<Teacher> showAllTeacherApp(){
-        List<Teacher> teachers = iTeacherService.showAllTeacher();
-        return teachers;
-    }
+
     @RequestMapping("/toAddTeacher")
     public String toAddTeacher(){
     return "crud/teacherAdd";

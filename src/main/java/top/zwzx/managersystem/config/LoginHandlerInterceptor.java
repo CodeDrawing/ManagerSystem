@@ -16,9 +16,14 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
 //             登陆成功后，应该有用户的session
 
         Object loginUser = request.getSession().getAttribute("loginUser");
+        Object role = request.getSession().getAttribute("role");
         if(loginUser==null){
-            request.setAttribute("msg","没有权限，请先登陆");
-            request.getRequestDispatcher("/index.html").forward(request,response);
+            if(("parents").equals(role)){
+                request.getRequestDispatcher("/school/login").forward(request,response);
+            }else {
+                request.setAttribute("msg", "没有权限，请先登陆");
+                request.getRequestDispatcher("/index.html").forward(request, response);
+            }
 //            不放行
             return false;
         }else{

@@ -26,4 +26,32 @@ public class ParentsServiceImpl implements IParentsService{
        List<Parents> parents = parentsMapper.loginSFCByTelephoneNumber(username, password);
         return parents;
     }
+
+    @Override
+    public List<Parents> showAllParentsList() {
+        List<Parents> parents = parentsMapper.showAllParentsList();
+        return parents;
+    }
+
+    @Override
+    public void dropParents(Integer id) {
+        parentsMapper.dropParents(id);
+    }
+
+    @Override
+    public Parents showOneParents(Integer id) {
+        Parents parents = parentsMapper.showOneParents(id);
+        return parents;
+    }
+
+    @Override
+    public void updateParents(Parents parents) {
+        parentsMapper.updateParents(parents);
+    }
+
+    @Override
+    public List<Parents> showOneParentsByTelephoneNumber(String telephoneNumber) {
+        List<Parents> parents = parentsMapper.showOneParentsByTelephoneNumber(telephoneNumber);
+        return parents;
+    }
 }

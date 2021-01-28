@@ -9,5 +9,21 @@
     <select id="loginSFCByTelephoneNumber" parameterType="java.lang.String" resultType="top.zwzx.managersystem.pojo.Parents">
         select * from parents where telephoneNumber=#{username} and password=#{password};
     </select>
+    <select id="showAllParentsList" resultType="top.zwzx.managersystem.pojo.Parents">
+        select * from parents p left join student s on p.studentId=s.studentId
+    </select>
 
+    <delete id="dropParents" parameterType="java.lang.Integer">
+        delete from parents where parentsId=#{id}
+    </delete>
+    <select id="showOneParents" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.Parents">
+        select * from parents where parentsId=#{id}
+    </select>
+    <update id="updateParents" parameterType="top.zwzx.managersystem.pojo.Parents">
+        update parents set parentsName=#{parentsName},telephoneNumber=#{telephoneNumber},studentId=#{studentId},email=#{email},password=#{password}
+        where parentsId=#{parentsId}
+    </update>
+    <select id="showOneParentsByTelephoneNumber" parameterType="java.lang.String" resultType="top.zwzx.managersystem.pojo.Parents">
+        select * from parents where telephoneNumber=#{telephoneNumber}
+    </select>
 </mapper>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www/thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/lunbo.css}" />
+    <link rel="stylesheet" th:href="@{/css/control.css}" />
+    <link rel="stylesheet" th:href="@{/css/layui.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/layer.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/loader.css}" />
+    <script th:src="@{https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js}"></script>
+
+    <title>能力风暴</title>
+  </head>
+  <body>
+    <div class="layui-container">
+      <div class="layui-row">
+        <div class="layui-col-xs8 layui-anim layui-anim-up">
+          <!--主容器-->
+          <div class="container">
+            <!--控制转到第几张按钮-->
+            <input id="btn1" name="dir" type="radio" />
+            <input id="btn2" name="dir" type="radio" />
+            <input id="btn3" name="dir" type="radio" />
+            <input id="btn4" name="dir" type="radio" />
+            <input id="btn5" name="dir" type="radio" />
+
+            <!--控制往左边轮播-->
+            <input id="left_btn1" class="dir_btn" name="dir" type="radio" />
+            <input id="left_btn2" class="dir_btn" name="dir" type="radio" />
+            <input id="left_btn3" class="dir_btn" name="dir" type="radio" />
+            <input id="left_btn4" class="dir_btn" name="dir" type="radio" />
+            <input id="left_btn5" class="dir_btn" name="dir" type="radio" />
+
+            <!--控制往右边轮播-->
+            <input id="right_btn1" class="dir_btn" name="dir" type="radio" />
+            <input id="right_btn2" class="dir_btn" name="dir" type="radio" />
+            <input id="right_btn3" class="dir_btn" name="dir" type="radio" />
+            <input id="right_btn4" class="dir_btn" name="dir" type="radio" />
+            <input id="right_btn5" class="dir_btn" name="dir" type="radio" />
+
+            <!--存放图片-->
+            <div class="pic">
+              <!--给所有图片套一个盒子 通过左边距进行轮播-->
+              <div class="box">
+                <img th:src="@{../img/1.jpg}" />
+                <img th:src="@{../img/2.jpg}" />
+                <img th:src="@{../img/3.jpg}" />
+                <img th:src="@{../img/4.jpg}" />
+                <img th:src="@{../img/5.jpg}" />
+              </div>
+
+              <!--给图片前面加一层图片s层 用于实现无缝轮播-->
+              <div class="before_box">
+                <img th:src="@{../img/5.jpg}" />
+                <img th:src="@{../img/1.jpg}" />
+              </div>
+
+              <!--给图片后面加一层图片层 用于实现无缝轮播-->
+              <div class="after_box">
+                <img th:src="@{../img/5.jpg}" />
+                <img th:src="@{../img/}" />
+              </div>
+            </div>
+
+            <!--左边的按钮 每次点击都会根据当前是第几张决定显示的按钮-->
+            <div class="left_box dir_box">
+              <label class="left_btn_1 btn_btn_1" for="left_btn1"></label>
+              <label class="left_btn_2 btn_btn_2" for="left_btn2"></label>
+              <label class="left_btn_3 btn_btn_3" for="left_btn3"></label>
+              <label class="left_btn_4 btn_btn_4" for="left_btn4"></label>
+              <label class="left_btn_5 btn_btn_5" for="left_btn5"></label>
+            </div>
+
+            <!--右边的按钮 每次点击都会根据当前是第几张决定显示的按钮-->
+            <div class="right_box dir_box">
+              <label class="right_btn_1 btn_btn_1" for="right_btn1"></label>
+              <label class="right_btn_2 btn_btn_2" for="right_btn2"></label>
+              <label class="right_btn_3 btn_btn_3" for="right_btn3"></label>
+              <label class="right_btn_4 btn_btn_4" for="right_btn4"></label>
+              <label class="right_btn_5 btn_btn_5" for="right_btn5"></label>
+            </div>
+
+            <!--下方按钮 点击各个按钮 决定跳转到第几张-->
+            <div class="count">
+              <ul>
+                <li class="current">
+                  <label class="btn_1" for="btn1"></label>
+                </li>
+                <li>
+                  <label class="btn_2" for="btn2"></label>
+                </li>
+                <li>
+                  <label class="btn_3" for="btn3"></label>
+                </li>
+                <li>
+                  <label class="btn_4" for="btn4"></label>
+                </li>
+                <li>
+                  <label class="btn_5" for="btn5"></label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 后期可以加一个通知 -->
+      <div class="layui-row" style="margin-top: 4%">
+        <div
+          class="layui-col-xs5 layui-col-xs-offset1 layui-anim layui-anim-up"
+          style="border: 2px;border-color: black;"
+        >
+          <a th:href="@{/school/courseIntroduce}">
+          <div class="one">
+            <div class="func">
+              <img th:src="@{../img/课程.png}" alt="" />
+            </div>
+            <div class="func">             
+              <div class="text">课程介绍
+              </div>
+            </div>
+          </div>
+        </a>
+        </div>
+
+        <div
+          class="layui-col-xs5 layui-col-xs-offset1 layui-anim layui-anim-up"
+          style="border: 2px;border-color: black;"
+        >
+        <a th:href="@{/school/applyCommit}">
+        <div class="one">
+          <div class="func">
+            <img th:src="@{../img/报名.png}" alt=""  >
+          </div>
+          <div class="func">             
+            <div class="text">立即报名
+            </div>
+          </div>
+        </div>
+      </a>
+        </div>
+
+        <div
+        class="layui-col-xs5 layui-col-xs-offset1 layui-anim layui-anim-up"
+        style="border: 2px;border-color: black;"
+      >
+      <a th:href="@{/school/teacherList}">
+      <div class="one">
+        <div class="func">
+          <img th:src="@{../img/人.png}" alt=""  >
+        </div>
+        <div class="func">             
+          <div class="text">师资团队
+          </div>
+        </div>
+      </div>
+      </a>
+      </div>
+    </a>
+      <div
+      class="layui-col-xs5 layui-col-xs-offset1 layui-anim layui-anim-up"
+      style="border: 2px;border-color: black;"
+    >
+    <a th:href="@{/school/we}">
+    <div class="one">
+      <div class="func">
+        <img th:src="@{../img/地图.png}" alt=""  >
+      </div>
+      <div class="func">             
+        <div class="text">联系我们
+        </div>
+      </div>
+    </div>
+  </a>
+    </div>
+
+    <div
+    class="layui-col-xs5 layui-col-xs-offset1 layui-anim layui-anim-up"
+    style="border: 2px;border-color: black;"
+  >
+  <div class="one">
+    <a th:href="@{/school/studentStyle}">
+    <div class="func">
+      <img th:src="@{../../img/图片.png}" alt=""  >
+    </div>
+    <div class="func">             
+      <div class="text">学生风采
+      </div>
+    </div>
+  </a>
+  </div>
+  </div>
+
+  <div
+  class="layui-col-xs5 layui-col-xs-offset1 layui-anim layui-anim-up"
+  style="border: 2px;border-color: black;"
+>
+<a th:href="@{/school/login}">
+<div class="one">
+  <div class="func">
+    <img th:src="@{../img/家校中心.png}" alt=""  >
+  </div>
+  <div class="func">             
+    <div class="text">家校中心
+    </div>
+  </div>
+</div>
+</a>
+</div>
+</a>
+
+      
+      </div>
+      <div class="logo layui-anim layui-anim-up logo1">
+        <div  ><img th:src="@{../img/能力风暴1.jpg}" alt="" style="width: 100px;">
+          <p >@内江能力风暴</p></div>
+
+      </div>
+    </div>
+
+
+    <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+      <div class="load_title">加载中</div>
+    </div>
+
+    <script type="text/javascript">
+      $(window).load(function () {
+        $("body").addClass("loaded").Chameleon({
+          current_item: "hoveralls",
+          json_url: "../Envato/items.json",
+        });
+        $("#loader-wrapper .load_title").remove();
+      });
+    </script>
+  </body>
+</html>
