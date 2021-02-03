@@ -20,4 +20,5 @@ public class Parents {
     private String email;
     private String password;
     private String finalPassword;
+    private String newPassword;
 }

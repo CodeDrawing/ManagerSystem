@@ -31,6 +31,9 @@
 				<div th:replace="~{commons/commons::sidebar(active='studentList.html')}"></div>
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+					<div>
+						<a class="btn btn-sm btn-light"style="font-size: 2rem" th:href="@{/parents/showAllParents}">家长管理</a>
+					</div>
 					<h2><a class="btn btn-sm btn-success" th:href="@{/student/add}">添加学生</a></h2>
 					<div class="table-responsive">
 						<table class="table table-striped table-sm">
@@ -71,6 +74,7 @@
 							</tbody>
 						</table>
 					</div>
+
 				</main>
 			</div>
 		</div>

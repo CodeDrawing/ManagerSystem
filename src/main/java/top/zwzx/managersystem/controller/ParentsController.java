@@ -5,7 +5,9 @@ import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.bind.annotation.*;
+import top.zwzx.managersystem.pojo.Advice;
 import top.zwzx.managersystem.pojo.Parents;
 import top.zwzx.managersystem.pojo.Student;
 import top.zwzx.managersystem.service.IMailService;
@@ -15,19 +17,16 @@ import top.zwzx.managersystem.service.IStudentService;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.server.PathParam;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Author zx
  * @Date 2021/1/21 12:01
  */
-
 @Controller
 @RequestMapping("/parents")
 public class ParentsController {
@@ -114,12 +113,13 @@ public class ParentsController {
     @CrossOrigin
     public Map loginSFC(@RequestParam("username")String username,@RequestParam("password") String password, HttpSession httpSession){
         Map<String, Object> map = new HashMap<>();
-
         List<Parents> parents = iParentsService.loginSFCByTelephoneNumber(username, password);
-        System.out.println(username+"密码"+password);
         if(parents.size()==1){
-            httpSession.setAttribute("loginUser",username);
-            httpSession.setAttribute("role",parents);
+            Integer loginUser=parents.get(0).getParentsId();
+            Integer studentId=parents.get(0).getStudentId();
+            //            httpSession.setAttribute("loginUser",loginUser);
+            httpSession.setAttribute("loginUser",loginUser);
+            httpSession.setAttribute("studentId",studentId);
             map.put("result",200);
         }else{
             map.put("result",4);
@@ -150,5 +150,100 @@ public class ParentsController {
         iParentsService.updateParents(parents);
         return "redirect:/parents/showAllParents";
     }
+    @RequestMapping("/updateParentsApp")
+    @ResponseBody
+    @CrossOrigin
+    public Map updateParentsApp(Parents parents){
+        HashMap<String, Object> map = new HashMap<>();
+        iParentsService.updateParents(parents);
+        map.put("result",200);
+        return map;
+    }
+    @RequestMapping("/updatePassword")
+    @ResponseBody
+    @CrossOrigin
+    public Map updatePassword(HttpSession httpSession,Parents parents){
+        parents.setParentsId((Integer) httpSession.getAttribute("loginUser" ));
+        HashMap<String, Object> map = new HashMap<>();
+        Integer loginUser = (Integer) httpSession.getAttribute("loginUser");
+        Parents parents1 = iParentsService.showOneParents(loginUser);
+        String oldPassword = parents1.getPassword();
+        if(parents.getPassword().isEmpty()){
+            map.put("result",4);
+        }else if(parents.getNewPassword().isEmpty()||parents.getFinalPassword().isEmpty()){
+            map.put("result",5);
+        }else if(!parents.getNewPassword().equals(parents.getFinalPassword())){
+            map.put("result",6);
+        }else if(!parents.getPassword().equals(oldPassword)){
+//            原密码不符
+            map.put("result",7);
+        }else{
+            parents.setPassword(parents.getNewPassword());
+            int i = iParentsService.updatePasswrod(parents);
+            if(i==1){
+                map.put("result",200);
+            }else{
+                map.put("result",500);
+            }
+        }
+        return map;
+    }
+    @RequestMapping("/commitAdvice")
+    @ResponseBody
+    @CrossOrigin
+    public Map commitAdvice(HttpSession httpSession,@RequestParam("content")String content,@RequestParam("courseName")String courseName){
+        HashMap<String, Object> map = new HashMap<>();
+        if(content.isEmpty()||courseName.isEmpty()){
+            map.put("result",5);
+            return map;
+        }
+        Integer loginUser=(Integer) httpSession.getAttribute("loginUser");
+
+        Advice advice = new Advice();
+        advice.setCourseName(courseName);
+        advice.setContent(content);
+        advice.setCreateTime(new Date());
+        advice.setParentsId(loginUser);
+        advice.setFeedBack("暂无");
+        advice.setFeedBackUser("暂无");
+        Parents parents = iParentsService.showOneParents(loginUser);
+        advice.setParentsName(parents.getParentsName());
+        int i = iParentsService.addAdvice(advice);
+        if(i==1){
+            map.put("result",200);
+        }else{
+            map.put("result",500);
+        }
+return map;
+    }
+    @RequestMapping("/showAllAdvice")
+    public String showAllAdvice(Model model){
+        List<Advice> advice = iParentsService.showAdvice();
+        model.addAttribute("advices",advice);
+        return "/crud/adviceList";
+    }
+    @RequestMapping("/dropAdvice/{id}")
+    public String dropAdvice(@PathVariable("id") Integer adviceId){
+        System.out.println(adviceId);
+        iParentsService.dropAdvice(adviceId);
+        return "redirect:/parents/showAllAdvice";
+    }
+    @RequestMapping("/feedBack/{id}")
+    public String feedBack(@PathVariable("id")Integer adviceId,Model model){
+        Advice advice = iParentsService.showOneAdvice(adviceId);
+        model.addAttribute("advice",advice);
+        return "/crud/feedBack";
+    }
+    @RequestMapping("/commitFeedBack")
+    @ResponseBody
+    public Map commitFeedBack(HttpSession httpSession,Advice advice){
+        HashMap<String, Object> map = new HashMap<>();
+        String loginUser = (String) httpSession.getAttribute("loginUser");
+        advice.setFeedBackUser(loginUser);
+        iParentsService.updateAdvice(advice);
+        map.put("result",200);
+        return map;
+    }
+
 
 }

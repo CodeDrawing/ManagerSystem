@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 
 <html lang="en" xmlns:th="http://www/thymeleaf.org">
+<link rel="stylesheet" th:href="@{/layui-v2.5.7/layui/css/layui.css}"/>
+
 <body>
 <!--导航栏-->
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" th:fragment="topbar">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">[[${session.loginUser}]]</a>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-    <ul class="navbar-nav px-3">
+<!--<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" th:fragment="topbar">-->
+<!--    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">[[${session.loginUser}]]</a>-->
+<!--    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+<!--    <ul class="navbar-nav px-3">-->
 
-    </ul>
-</nav>
+<!--    </ul>-->
+<!--</nav>-->
 
 <!--侧边栏-->
 <nav th:fragment="sidebar">
@@ -20,10 +22,11 @@
 </label>
 <div class="sidebar">
     <header>能力风暴</header>
-    <li class="nav-item text-nowrap">
-        <a class="nav-link" th:href="@{/user/loginOut}">退出登陆</a>
-    </li>
+
     <ul>
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" th:href="@{/user/loginOut}"><i class="fas fa-"></i>退出登陆</a>
+        </li>
         <li>        <a
                 th:class="${active=='teacherList.html'?'nav-link active':'nav-link'}"
                 th:href="@{/teacher/showAllTeacher}"
@@ -32,42 +35,43 @@
         <li>        <a
                 th:class="${active=='classList.html'?'nav-link active':'nav-link'}"
                 th:href="@{/class/showAllClass}"
-        ><i class="fas fa-link"></i>班级管理</a></li>
+        ><i class="fa fa-address-book"></i>班级管理</a></li>
         <li>        <a
                 th:class="${active=='studentList.html'?'nav-link active':'nav-link'}"
                 th:href="@{/student/showAllStudent}"
-        ><i class="fas fa-stream"></i>学生管理</a></li>
-        <li>        <a
-                th:class="${active=='parentsList.html'?'nav-link active':'nav-link'}"
-                th:href="@{/parents/showAllParents}"
-        ><i class="fas fa-stream"></i>家长管理</a></li>
-        <li>        <a
-                th:class="${active=='salaryList.html'?'nav-link active':'nav-link'}"
-                th:href="@{/salary/showAllSalary}"
-        ><i class="fas fa-calendar-week"></i>工资管理</a></li>
+        ><i class="fa fa-address-card"></i>学生管理</a></li>
+<!--        <li>        <a-->
+<!--                th:class="${active=='parentsList.html'?'nav-link active':'nav-link'}"-->
+<!--                th:href="@{/parents/showAllParents}"-->
+<!--        ><i class="fas fa-stream"></i>家长管理</a></li>-->
+<!--        <li>        <a-->
+<!--                th:class="${active=='salaryList.html'?'nav-link active':'nav-link'}"-->
+<!--                th:href="@{/salary/showAllSalary}"-->
+<!--        ><i class="fas fa-calendar-week"></i>工资管理</a></li>-->
         <li>        <a
                 th:class="${active=='showStudent.html'?'nav-link active':'nav-link'}"
                 th:href="@{/student/showStudent}"
-        ><i class="far fa-question-circle"></i>学生展示</a></li>
+        ><i class="fas fa-calendar-week"></i>学生展示</a></li>
         <li>        <a
                 th:class="${active=='schoolStyle.html'?'nav-link active':'nav-link'}"
                 th:href="@{/schoolStyle/showAllSchoolImage}"
-        ><i class="far fa-question-circle"></i>学校风采</a></li>
+        ><i class="fa fa-child"></i>学校风采</a></li>
         <li>        <a
                 th:class="${active=='courseList.html'?'nav-link active':'nav-link'}"
                 th:href="@{/course/showAllCourse}"
-        ><i class="far fa-question-circle"></i>课程管理</a></li>
-        <li>        <a
-                th:class="${active=='showAllApplyCourse.html'?'nav-link active':'nav-link'}"
-                th:href="@{/apply/showAllApplyCourse}"
-        ><i class="far fa-question-circle"></i>试听课管理</a></li>
-        <li>        <a
-                th:class="${active=='school.html'?'nav-link active':'nav-link'}"
-                th:href="@{/school/index}"
-        ><i class="far fa-question-circle"></i>前端页面</a></li>
+        ><i class="fas fa-stream"></i>课程管理</a></li>
+<!--        <li>        <a-->
+<!--                th:class="${active=='showAllApplyCourse.html'?'nav-link active':'nav-link'}"-->
+<!--                th:href="@{/apply/showAllApplyCourse}"-->
+<!--        ><i class="far fa-question-circle"></i>试听课管理</a></li>-->
+    <!--        <li>        <a-->
+    <!--                th:class="${active=='school.html'?'nav-link active':'nav-link'}"-->
+    <!--                th:href="@{/school/normal/index}"-->
+    <!--        ><i class="far fa-question-circle"></i>前端页面</a></li>-->
     </ul>
 </div>
 
 </nav>
+
 </body>
 </html>

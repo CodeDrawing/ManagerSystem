@@ -57,9 +57,9 @@ ul li:hover a {
     margin-right: 16px;
 }
 
-#check1 {
-    display: none;
-}
+/*#check1 {*/
+/*    !*display: none;*!*/
+/*}*/
 
 label #btn1,
 label #cancel1 {

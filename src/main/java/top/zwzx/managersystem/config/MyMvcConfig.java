@@ -19,7 +19,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/index.html").setViewName("index");
-        registry.addViewController("/main.html").setViewName("dashboard");
+//        registry.addViewController("/main.html").setViewName("dashboard");
     }
     @Bean
     public LocaleResolver localeResolver(){
@@ -29,9 +29,9 @@ public class MyMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/index.html","/","/layer-v3.2.0/**","/layui-v2.5.7/**","/user/login","/css/**","/img/**","/js/**","/studentText/uploadFile/**",
+        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/index.html","/","/layer-v3.2.0/**","/layui-v2.5.7/**","/user/login","/user/toLogin","/css/**","/img/**","/js/**","/studentText/uploadFile/**",
                 "/schoolStyle/showAllSchoolImageApp","/teacher/showAllTeacherApp","/teacher/showOneTeacherApp/**","/course/showAllCourseApp","/course/showOneCourseApp/**","/apply/applyCourseApp",
-                "/parents/kaptcha","/parents/verificationKaptcha","/parents/registerParents","/parents/loginSFC","/school/**");
+                "/parents/kaptcha","/parents/verificationKaptcha","/parents/registerParents","/parents/loginSFC","/school/normal/**");
     }
 
     @Override

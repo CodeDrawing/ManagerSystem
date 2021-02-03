@@ -17,7 +17,7 @@
             <form class="layui-form layui-anim layui-anim-upbit" style="margin-right: 10%;margin-left: -10%;" action="" id="form1">
                 <!-- 用户名 -->            
               <div class="layui-form-item">
-                <label class="layui-form-label">家长姓名：</label>
+                <label class="layui-form-label"style="background-color:rgb(46, 156, 239)">家长姓名：</label>
                 <div class="layui-input-block">
                   <input
                     type="text"
@@ -30,7 +30,7 @@
               </div>
               <!-- 电话 -->
               <div class="layui-form-item">
-                  <label class="layui-form-label">手机：</label>
+                  <label class="layui-form-label"style="background-color:rgb(46, 156, 239)">手机：</label>
                   <div class="layui-input-block">
                     <input
                       type=""
@@ -43,7 +43,7 @@
                 </div>
               <!-- 邮箱 -->
               <div class="layui-form-item">
-                <label class="layui-form-label">邮箱地址：</label>
+                <label class="layui-form-label"style="background-color:rgb(46, 156, 239)">邮箱地址：</label>
                 <div class="layui-input-block">
                   <input
                     type="text"
@@ -56,7 +56,7 @@
               </div>
               <!-- 密码 -->
               <div class="layui-form-item">
-              <label class="layui-form-label">密码：</label>
+              <label class="layui-form-label"style="background-color:rgb(46, 156, 239)">密码：</label>
               <div class="layui-input-block">
               <input
               type="password"
@@ -70,7 +70,7 @@
               </div>
               <!-- 确认密码 -->
               <div class="layui-form-item">
-                <label class="layui-form-label">确认密码</label>
+                <label class="layui-form-label"style="background-color:rgb(46, 156, 239)">确认密码</label>
                 <div class="layui-input-block">
                 <input
                 type="password"
@@ -110,7 +110,7 @@
                 </div>
                 <div class="layui-form-item">
                   <div class="layui-input-block">
-                    <a th:href="@{login.html}">以有账号？点击登陆</a>
+                    <a th:href="@{/school/normal/login}">以有账号？点击登陆</a>
                   </div>
                 </div>
             </form>
@@ -155,7 +155,7 @@
           layer.msg("注册成功！绑定学生请联系老师！",{icon: 1,time:5000, shade:0.4})
             $("#kaptchaImg").attr("src", path);
             $("#submit").attr("disabled",true)
-            window.location.href("/school/index")
+            window.location.href="/school/normal/index"
         }else if(data.result==4){
             $("#kaptchaImg").attr("src", path);
           layer.msg("服务器出错，请稍后重试！",{icon: 2,time:2000, shade:0.4})
@@ -179,7 +179,8 @@
 </script>
     <script>
         function refresh_kaptcha() {
-            var path = "http://192.168.0.102/parents/kaptcha?p=" + Math.random();
+            var path = "http://nlfb.5gzvip.idcfengye.com/parents/kaptcha?p=" + Math.random();
+            // var path = "http://192.168.0.102/parents/kaptcha?p=" + Math.random();
             $("#kaptchaImg").attr("src", path);
         }
     </script>
@@ -192,6 +193,7 @@
         $.ajax({
             type: "post",
             dataType: "json",
+            async:false,
             url : "/parents/verificationKaptcha",
             data : {
                 kaptcha : kaptcha

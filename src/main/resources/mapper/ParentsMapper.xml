@@ -26,4 +26,34 @@
     <select id="showOneParentsByTelephoneNumber" parameterType="java.lang.String" resultType="top.zwzx.managersystem.pojo.Parents">
         select * from parents where telephoneNumber=#{telephoneNumber}
     </select>
+    <select id="showOneParentsAndStudent" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.Parents">
+        select * from parents p,student s where p.studentId=s.studentId and p.parentsId=#{id}
+    </select>
+    <update id="updatePasswrod" parameterType="top.zwzx.managersystem.pojo.Parents">
+        update parents set password=#{password} where parentsId=#{parentsId}
+    </update>
+    <select id="showHaveClass" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.haveClass">
+        select className,classRoom,classTime,text,teacherName from classselect sc,class c,teacher t where sc.classId=c.classId and c.teacherId=t.teacherId and sc.studentId=#{studentId} group by c.classId
+    </select>
+    <insert id="addAdvice" parameterType="top.zwzx.managersystem.pojo.Advice">
+        insert into advice(parentsName,parentsId,content,createTime,feedBack,feedBackUser,courseName) value (#{parentsName},#{parentsId},#{content},#{createTime},#{feedBack},#{feedBackUser},#{courseName})
+    </insert>
+    <select id="showAdvice" resultType="top.zwzx.managersystem.pojo.Advice">
+        select * from advice;
+    </select>
+    <delete id="dropAdvice" parameterType="java.lang.Integer">
+        delete from advice where adviceId=#{adviceId}
+    </delete>
+    <select id="showOneAdvice" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.Advice">
+        select * from advice where adviceId=#{adviceId}
+    </select>
+    <update id="updateAdvice" parameterType="top.zwzx.managersystem.pojo.Advice">
+        update advice set feedBack=#{feedBack},feedBackUser=#{feedBackUser} where adviceId=#{adviceId}
+    </update>
+    <select id="showAdviceByParentsIdNotFeedBack" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.Advice">
+        select  * from advice where parentsId=#{parentsId} and feedBack='暂无';
+    </select>
+    <select id="showAdviceByParentsIdAlreadyFeedBack" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.Advice">
+        select  * from advice where parentsId=#{parentsId} and feedBack!='暂无';
+    </select>
 </mapper>

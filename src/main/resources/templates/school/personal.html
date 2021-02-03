@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www/thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>家校中心</title>
+  <link rel="stylesheet" th:href="@{/layui-v2.5.7/layui/css/layui.css}" />
+  <link rel="stylesheet" th:href="@{/layer-v3.2.0/layer/theme/default/layer.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/loader.css}" />
+  <link rel="stylesheet" th:href="@{/css/personal.css}">
+</head>
+<body>
+
+<!-- 个人中心 -->
+<h2 class="layui-icon layui-icon-username" align="center"  style="margin-top: 5%; color: rgb(0, 204, 255);font-size: 29px;">家校中心</h2>
+
+<!-- 导航栏 -->
+<ul class="layui-nav layui-bg-blue" lay-filter="" style="display: flex;margin-top: 7%;"  >
+  
+  <li class="layui-nav-item">
+    <a href="javascript:;" style="font-size:18px;">我的</a>
+    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+      <dd><a th:href="@{/school/myAccount}">修改信息</a></dd>
+      <dd><a th:href="@{/school/myCourses}">我的课程</a></dd>
+      <dd><a th:href="@{/school/loginOut}">退出登陆</a></dd>
+    </dl>
+  </li>
+  
+  <li class="layui-nav-item">
+    <a href="javascript:;" style="font-size: 18px;">课堂</a>
+    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+      <dd><a th:href="@{/school/classPerform}">上课记录</a></dd>
+      <dd><a th:href="@{/school/adviceToTeacher}">给老师的建议</a></dd>
+    </dl>
+  </li>
+  <li class="layui-nav-item">
+    <a href="javascript:;" style="font-size: 18px;">能力风暴</a>
+    <dl class="layui-nav-child"> <!-- 二级菜单 -->
+      <dd><a th:href="@{/school/normal/index}">首页</a></dd>
+      <dd><a th:href="@{/school/normal/courseIntroduce}">学校课程</a></dd>
+    </dl>
+  </li>
+
+</ul>
+ <!-- 公告 -->
+ <h2 class="layui-icon layui-icon-layer" style="font-size: 30px; color: red;margin-top: 35%;" align="center">公告</h2>
+
+ <!-- <div style="border: 1px blue solid;width: 300px;height:300px;margin: 10%; margin-top: 0%;"></div> -->
+ <textarea name="" required lay-verify="required" placeholder="公告内容" class="layui-textarea">热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博</textarea>
+
+
+
+
+<script th:src="@{/js/jquery-1.11.3.min.js}"></script>
+<script th:src="@{/js/layui.js}"></script>
+<!--    <script th:src="@{/layui-v2.5.7/layui/layui.js}"></script>-->
+<script th:src="@{/layer-v3.2.0/layer/layer.js}"></script>
+<script >
+  layui.use(['element'],function(){
+  })
+ </script>
+</body>
+</html>

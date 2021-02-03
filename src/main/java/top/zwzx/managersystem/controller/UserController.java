@@ -20,6 +20,11 @@ import java.util.List;
 public class UserController {
     @Autowired
     IUserService iUserService;
+    @RequestMapping("/toLogin")
+    public String toLogin(HttpSession httpSession){
+        httpSession.setAttribute("role","teacher");
+        return "index";
+    }
 
 @RequestMapping("/login")
     public String login(@RequestParam("username") String username,
@@ -39,10 +44,11 @@ public class UserController {
             return "index";
         }
     }
+
     @RequestMapping("/loginOut")
     public String loginOut(HttpSession session){
         session.removeAttribute("loginUser");
-        return "redirect:/";
+        return "redirect:/user/toLogin";
     }
 
 }

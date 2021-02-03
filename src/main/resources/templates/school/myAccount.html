@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www/thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改信息</title>
+    <link rel="stylesheet" th:href="@{/layui-v2.5.7/layui/css/layui.css}" />
+    <link rel="stylesheet" th:href="@{/layer-v3.2.0/layer/theme/default/layer.css}" />
+</head>
+<body>
+    <div class="layui-container">
+        <div class="layui-row">
+            <h1 class="layui-icon layui-icon-username" style="margin-left:40%;margin-bottom:5%;margin-top: 5%">修改信息</h1>
+            <form class="layui-form layui-anim layui-anim-upbit" style=" margin-bottom:5% ;" th:action="@{/parents/updateParents}" method="post">
+                <input type="hidden" name="parentsId" th:value="${parents.getParentsId()}">
+<!--姓名-->
+                <div class="layui-form-item">
+                    <label class="layui-form-label"style="background-color:rgb(46, 156, 239)" >家长姓名：</label>
+                    <div class="layui-input-block">
+                        <input
+                                style="width:200px"
+                                type="text"
+                                name="parentsName"
+                                required
+                                th:value="${parents.getParentsName()}"
+                                lay-verify="required"
+                                placeholder="家长姓名"
+                                class="layui-input">
+                    </div>
+                </div>
+                <!-- 邮箱 -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label"style="background-color:rgb(46, 156, 239)" >邮箱：</label>
+                    <div class="layui-input-block">
+                        <input
+                                style="width:200px"
+                                type="text"
+                                name="email"
+                                th:value="${parents.getEmail()}"
+                                required
+                                lay-verify="required|email"
+                                placeholder="邮箱"
+                                class="layui-input">
+                    </div>
+                </div>
+
+
+                <!-- 手机号 -->
+                <div class="layui-form-item">
+                    <label  class="layui-form-label"style="background-color:rgb(46, 156, 239)" >手机号码：</label>
+
+                    <div class="layui-input-block">
+                        <input
+                                style="width:200px"
+                                type="text"
+                                th:value="${parents.getTelephoneNumber()}"
+                                name="telephoneNumber"
+                                required
+                                lay-verify="required|phone"
+                                placeholder="手机号码"
+                                class="layui-input">
+                    </div>
+                </div>
+<!--                学生id-->
+                <input type="hidden" name="studentId" th:value="${parents.getStudentId()}">
+                <!-- 绑定学生 -->
+
+                <div class="layui-form-item">
+                    <label  class="layui-form-label"style="background-color:rgb(46, 156, 239)" >绑定学生：</label>
+                    <div class="layui-input-block">
+                        <input style="width:200px"
+                               type="text"
+                               th:value="${parents.getStudentName()}"
+                               name="studentName"
+                               class="layui-input"
+                               disabled
+                        >
+                    </div>
+                </div>
+<!--                密码-->
+                <input type="hidden" name="password" th:value="${parents.getPassword()}">
+                <!-- 提交按钮 -->
+                <div class="layui-form-item">
+                    <div class="layui-input-block" style="display: flex;">
+                        <button class="layui-btn" type="button" style="background-color:rgb(46, 156, 239)" onclick="commit()"  lay-submit lay-filter="formDemo">立即提交</button>
+                        <button style="display: flex;" type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <a href="/school/alterPassword">修改密码</a>
+                    </div>
+                </div>
+
+            </form>
+    </div>
+    </div>
+    <script th:src="@{/js/jquery-1.11.3.min.js}"></script>
+    <script th:src="@{/js/layui.js}"></script>
+    <!--    <script th:src="@{/layui-v2.5.7/layui/layui.js}"></script>-->
+    <script th:src="@{/layer-v3.2.0/layer/layer.js}"></script>
+<script>
+    function commit(){
+
+    }
+</script>
+</body>
+</html>

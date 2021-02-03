@@ -63,7 +63,7 @@
           <div class="layui-form-item">
             <label  class="layui-form-label">选择课程：</label>
                 <div class="layui-input-block"   >
-                  <select name="applyCourse" >
+                <select name="applyCourse" >
                     <option th:each="course:${courses}" th:value="${course.getCourseName()}" th:text="${course.getCourseName()}" th:field="${defaultCourse.courseName}">
                 </select>
                 </div>
@@ -90,7 +90,7 @@
               <!-- 提交按钮 -->
               <div class="layui-form-item">
                 <div class="layui-input-block">
-                  <button class="layui-btn"style="background-color:#192352" lay-submit lay-filter="formDemo" onclick="commit()">立即提交</button>
+                  <button class="layui-btn" type="button" style="background-color:#192352" lay-filter="formDemo" onclick="commit()">立即提交</button>
                   <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
               </div>
@@ -122,6 +122,30 @@
       });
     </script>
     <script th:src="@{/js/layui.js}"></script>
-
+    <script>
+        function commit() {
+            console.log("123");
+            $.ajax({
+                type:"post",
+                dataType:"json",
+                async:false,
+                // url:"http://192.168.0.102/apply/applyCourseApp",
+                url:"http://nlfb.5gzvip.idcfengye.com/apply/applyCourseApp",
+                data:$("#form1").serialize(),
+                success: function (data){
+                    if(data.result==200){
+                        layer.msg("提交成功！跳转中..");
+                        window.location.href="/school/normal/index"
+                    }else if(data.result==4){
+                        layer.msg("选项不能为空！");
+                    }
+                },
+                error :function (){
+                    layer.msg("服务器错误，请稍后！")
+                }
+            });
+            return false;
+        }
+    </script>
   </body>
 </html>

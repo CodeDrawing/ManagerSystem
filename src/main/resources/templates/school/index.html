@@ -44,23 +44,23 @@
             <div class="pic">
               <!--给所有图片套一个盒子 通过左边距进行轮播-->
               <div class="box">
-                <img th:src="@{../img/1.jpg}" />
-                <img th:src="@{../img/2.jpg}" />
-                <img th:src="@{../img/3.jpg}" />
-                <img th:src="@{../img/4.jpg}" />
-                <img th:src="@{../img/5.jpg}" />
+                <img th:src="@{../../img/1.jpg}" />
+                <img th:src="@{../../img/2.jpg}" />
+                <img th:src="@{../../img/3.jpg}" />
+                <img th:src="@{../../img/4.jpg}" />
+                <img th:src="@{../../img/5.jpg}" />
               </div>
 
               <!--给图片前面加一层图片s层 用于实现无缝轮播-->
               <div class="before_box">
-                <img th:src="@{../img/5.jpg}" />
-                <img th:src="@{../img/1.jpg}" />
+                <img th:src="@{../../img/5.jpg}" />
+                <img th:src="@{../../img/1.jpg}" />
               </div>
 
               <!--给图片后面加一层图片层 用于实现无缝轮播-->
               <div class="after_box">
-                <img th:src="@{../img/5.jpg}" />
-                <img th:src="@{../img/}" />
+                <img th:src="@{../../img/5.jpg}" />
+                <img th:src="@{../../img/1.jpg}" />
               </div>
             </div>
 
@@ -111,10 +111,10 @@
           class="layui-col-xs5 layui-col-xs-offset1 layui-anim layui-anim-up"
           style="border: 2px;border-color: black;"
         >
-          <a th:href="@{/school/courseIntroduce}">
+          <a th:href="@{/school/normal/courseIntroduce}">
           <div class="one">
             <div class="func">
-              <img th:src="@{../img/课程.png}" alt="" />
+              <img th:src="@{../../img/课程.png}" alt="" />
             </div>
             <div class="func">             
               <div class="text">课程介绍
@@ -128,10 +128,10 @@
           class="layui-col-xs5 layui-col-xs-offset1 layui-anim layui-anim-up"
           style="border: 2px;border-color: black;"
         >
-        <a th:href="@{/school/applyCommit}">
+        <a th:href="@{/school/normal/applyCommit}">
         <div class="one">
           <div class="func">
-            <img th:src="@{../img/报名.png}" alt=""  >
+            <img th:src="@{../../img/报名.png}" alt=""  >
           </div>
           <div class="func">             
             <div class="text">立即报名
@@ -145,10 +145,10 @@
         class="layui-col-xs5 layui-col-xs-offset1 layui-anim layui-anim-up"
         style="border: 2px;border-color: black;"
       >
-      <a th:href="@{/school/teacherList}">
+      <a th:href="@{/school/normal/teacherList}">
       <div class="one">
         <div class="func">
-          <img th:src="@{../img/人.png}" alt=""  >
+          <img th:src="@{../../img/人.png}" alt=""  >
         </div>
         <div class="func">             
           <div class="text">师资团队
@@ -162,10 +162,10 @@
       class="layui-col-xs5 layui-col-xs-offset1 layui-anim layui-anim-up"
       style="border: 2px;border-color: black;"
     >
-    <a th:href="@{/school/we}">
+    <a th:href="@{/school/normal/we}">
     <div class="one">
       <div class="func">
-        <img th:src="@{../img/地图.png}" alt=""  >
+        <img th:src="@{../../img/地图.png}" alt=""  >
       </div>
       <div class="func">             
         <div class="text">联系我们
@@ -180,7 +180,7 @@
     style="border: 2px;border-color: black;"
   >
   <div class="one">
-    <a th:href="@{/school/studentStyle}">
+    <a th:href="@{/school/normal/studentStyle}">
     <div class="func">
       <img th:src="@{../../img/图片.png}" alt=""  >
     </div>
@@ -196,10 +196,10 @@
   class="layui-col-xs5 layui-col-xs-offset1 layui-anim layui-anim-up"
   style="border: 2px;border-color: black;"
 >
-<a th:href="@{/school/login}">
+<a th:href="@{/school/normal/login}">
 <div class="one">
   <div class="func">
-    <img th:src="@{../img/家校中心.png}" alt=""  >
+    <img th:src="@{../../img/家校中心.png}" alt=""  >
   </div>
   <div class="func">             
     <div class="text">家校中心
@@ -213,7 +213,7 @@
       
       </div>
       <div class="logo layui-anim layui-anim-up logo1">
-        <div  ><img th:src="@{../img/能力风暴1.jpg}" alt="" style="width: 100px;">
+        <div  ><img th:src="@{../../img/能力风暴1.jpg}" alt="" style="width: 100px;">
           <p >@内江能力风暴</p></div>
 
       </div>

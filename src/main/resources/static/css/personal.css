@@ -1,0 +1,22 @@
+.my {
+  font-size: 18px;
+  color: aqua;
+  width: 20%;
+  height: 30%;
+  background-color: bisque;
+}
+.course {
+  font-size: 18px;
+  color: aquamarine;
+  width: 20%;
+  height: 30%;
+  background-color: blueviolet;
+  display: flex;
+  margin-left: auto;
+  text-align: right;
+}
+.box {
+  padding: 3%;
+  border: 1px red solid;
+  display: flex;
+}

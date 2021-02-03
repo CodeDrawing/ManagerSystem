@@ -55,7 +55,7 @@
               </div>
               <div class="layui-form-item">
                 <div class="layui-input-block">
-                  <a th:href="@{/school/register}">还没有账号？点击注册</a>
+                  <a th:href="@{/school/normal/register}">还没有账号？点击注册</a>
                 </div>
               </div>
           </form>
@@ -93,12 +93,17 @@
           type:"post",
           dataType:"json",
           async:false,
-          url:"http://192.168.0.102/parents/loginSFC",
+          //注意，这个localhost要和后台的域名一样，不让后台不能获取到session
+          // url:"http://192.168.0.102/parents/loginSFC",
+          url:"http://nlfb.5gzvip.idcfengye.com/parents/loginSFC",
           data:{"username":username,"password":password},
+          xhrFields: {
+            withCredentials: true
+          },
           success:function(data){
             if(data.result==200){
               layer.msg("登陆成功，正在跳转",{icon: 1,time:2000, shade:0.4})
-              window.location.href='/school/index';
+              window.location.href='/school/personal';
             }else{
               // alert("登陆失败，请检查用户名和密码！");
               layer.msg("登陆失败，请检查用户名和密码！",{icon: 2,time:2000, shade:0.4})

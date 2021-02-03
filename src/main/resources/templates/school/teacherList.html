@@ -64,7 +64,8 @@
     var layer=layui.layer;
       $.ajax({
         //要点 url地址一定要写主机ip不能用localhost或者127。0。0。1
-        url:"http://192.168.0.102/teacher/showOneTeacherApp/"+id,
+        // url:"http://192.168.0.102/teacher/showOneTeacherApp/"+id,
+        url:"http://nlfb.5gzvip.idcfengye.com/teacher/showOneTeacherApp/"+id,
         type:"get",
         success:function(info){
           layer.open({

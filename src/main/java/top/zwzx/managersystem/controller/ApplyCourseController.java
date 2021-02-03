@@ -30,6 +30,7 @@ public class ApplyCourseController {
 //    跨域问题，导致一直不能返回ajax的success function（）{}
 
     public Map applyCourseApp(ApplyCourse applyCourse){
+        System.out.println("1111");
         Map<Object, Object> map = new HashMap<>();
         if(applyCourse.getApplyCourse().isEmpty()||applyCourse.getStudentName().isEmpty()||
         applyCourse.getComeOnTime().isEmpty()||applyCourse.getTelephone().isEmpty()){
