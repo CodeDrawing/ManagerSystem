@@ -12,5 +12,15 @@
     <select id="showOneBigImage" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.SchoolStyle">
         select * from schoolStyle where imageId=#{id}
     </select>
+    <select id="showAllClassRecord" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.ClassRecord">
+        select cr.text,cr.date,c.className,cr.classRecordId from classrecord cr,class c where c.classId=cr.classId and studentId=#{studentId} order by cr.date desc
+    </select>
+    <select id="showImageByClassRecordId" resultType="top.zwzx.managersystem.pojo.Image" parameterType="java.lang.Integer">
+        select dateTime alt,studentId pid,image src,image thumb from imagestyle where classRecordId=#{classRecordId}
+    </select>
+    <select id="showAllClassImageByStudentId" resultType="top.zwzx.managersystem.pojo.ImageStyle" parameterType="java.lang.Integer">
+        select * from imagestyle where studentId=#{studentId}
+    </select>
+
 
 </mapper>

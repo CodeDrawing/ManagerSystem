@@ -51,7 +51,7 @@
         <!--添加员工的表单-->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <form th:action="@{/dangAn/updateClassRecord}" method="post">
-                <input type="hidden" name="ID" th:value="${dangAn.getID()}">
+                <input type="hidden" name="classRecordId" th:value="${dangAn.getClassRecordId()}">
                 <input type="hidden" name="studentId" th:value="${dangAn.getStudentId()}">
                 <div class="form-group">
                     <label>课程名</label>
@@ -78,7 +78,7 @@
             <div style="display:block;">
                 <form th:action="@{/dangAn/addImage}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <input type="hidden" name="classRecordId" th:value="${dangAn.getID()}">
+                        <input type="hidden" name="classRecordId" th:value="${dangAn.getClassRecordId()}">
                         <input type="hidden" name="studentId" th:value="${dangAn.getStudentId()}">
                         <input type="file" name="file" value="上课照片" style="width:35%" class="btn btn-info">
                         <input type="submit" value="上传照片" >
@@ -113,14 +113,6 @@
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-<!-- Icons -->
-<script type="text/javascript" src="/js/feather.min.js"></script>
-<script>
-    feather.replace()
-</script>
-
-<!-- Graphs -->
-<script type="text/javascript" src="/js/Chart.min.js"></script>
 
 
 </body>

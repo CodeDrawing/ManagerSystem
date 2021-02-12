@@ -7,9 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 import org.springframework.web.bind.annotation.*;
-import top.zwzx.managersystem.pojo.Advice;
-import top.zwzx.managersystem.pojo.Parents;
-import top.zwzx.managersystem.pojo.Student;
+import top.zwzx.managersystem.pojo.*;
 import top.zwzx.managersystem.service.IMailService;
 import top.zwzx.managersystem.service.IParentsService;
 import top.zwzx.managersystem.service.IStudentService;
@@ -241,6 +239,47 @@ return map;
         String loginUser = (String) httpSession.getAttribute("loginUser");
         advice.setFeedBackUser(loginUser);
         iParentsService.updateAdvice(advice);
+        map.put("result",200);
+        return map;
+    }
+    @RequestMapping("/showNotice")
+    public String showNotice(Model model){
+        List<Notice> notices = iParentsService.showNotice();
+
+        model.addAttribute("notices",notices);
+
+        return "/crud/notice";
+    }
+    @RequestMapping("/commitNotice")
+    @ResponseBody
+    public Map commitNotice(HttpSession httpSession,Notice notice){
+        System.out.println(notice.getFirst());
+        HashMap<String, Object> map = new HashMap<>();
+        String loginUser =(String) httpSession.getAttribute("loginUser");
+        notice.setCreateUser(loginUser);
+        notice.setCreateTime(new Date());
+        notice.setReadedCount(0);
+        if(("on").equals(notice.getFirst())){
+            iParentsService.updateAllFirerIsFalse();
+            iParentsService.addNotice(notice);
+        }else {
+            iParentsService.addNotice(notice);
+        }
+        map.put("result",200);
+        return map;
+    }
+    @RequestMapping("/remindClass")
+    @ResponseBody
+    public Map remindClass(@RequestParam("classTime")String classTime,@RequestParam("classId") Integer classId,@RequestParam("text") String text,HttpSession httpSession){
+        HashMap<String, Object> map = new HashMap<>();
+        RemindClass remindClass = new RemindClass();
+        remindClass.setClassId(classId);
+        remindClass.setClassTime(classTime);
+        remindClass.setCreateTime(new Date());
+        remindClass.setCreateUser((String) httpSession.getAttribute("loginUser"));
+        remindClass.setText(text);
+        System.out.println(remindClass);
+        iParentsService.addRemindClass(remindClass);
         map.put("result",200);
         return map;
     }

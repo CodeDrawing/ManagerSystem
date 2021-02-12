@@ -143,12 +143,14 @@
       </script>
     <script>
   function commit() {
-      var path = "http://192.168.0.102/parents/kaptcha?p=" + Math.random();
+      // var path = "http://192.168.0.102/parents/kaptcha?p=" + Math.random();
+      var path = "http://nlfb.5gzvip.idcfengye.com/parents/kaptcha?p=" + Math.random();
     $.ajax({
       type:"post",
       dataType:"json",
         async:false,
-      url:"http://192.168.0.102/parents/registerParents",
+      // url:"http://192.168.0.102/parents/registerParents",
+      url:"http://nlfb.5gzvip.idcfengye.com/parents/registerParents",
       data:$("#form1").serialize(),
       success:function (data){
         if(data.result==200){

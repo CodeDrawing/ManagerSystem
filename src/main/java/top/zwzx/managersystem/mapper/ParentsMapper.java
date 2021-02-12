@@ -2,10 +2,9 @@ package top.zwzx.managersystem.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-import top.zwzx.managersystem.pojo.Advice;
-import top.zwzx.managersystem.pojo.Parents;
-import top.zwzx.managersystem.pojo.haveClass;
+import top.zwzx.managersystem.pojo.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,5 +31,12 @@ public interface ParentsMapper {
     void updateAdvice(Advice advice);
     List<Advice> showAdviceByParentsIdNotFeedBack(Integer parentsId);
     List<Advice> showAdviceByParentsIdAlreadyFeedBack(Integer parentsId);
-
+    List<Notice> showNotice();
+    void addNotice(Notice notice);
+    void updateAllFirerIsFalse();
+    Notice showFirstIsOn();
+    void addReadedCount(Integer noticeId);
+    void addRemindClass(RemindClass remindClass);
+    List<RemindClass> showTodayClass(RemindClass remindClass);
+    List<RemindClass> showTomorrowClass(RemindClass remindClass);
 }

@@ -56,4 +56,28 @@
     <select id="showAdviceByParentsIdAlreadyFeedBack" parameterType="java.lang.Integer" resultType="top.zwzx.managersystem.pojo.Advice">
         select  * from advice where parentsId=#{parentsId} and feedBack!='暂无';
     </select>
+    <select id="showNotice" resultType="top.zwzx.managersystem.pojo.Notice">
+        select * from notice order by createTime desc
+    </select>
+    <insert id="addNotice" parameterType="top.zwzx.managersystem.pojo.Notice">
+        insert into notice(title,content,readedCount,createUser,createTime,first) value (#{title},#{content},#{readedCount},#{createUser},#{createTime},#{first})
+    </insert>
+    <update id="updateAllFirerIsFalse" >
+        update notice set first=''
+    </update>
+    <select id="showFirstIsOn" resultType="top.zwzx.managersystem.pojo.Notice">
+        select * from notice where first='on'
+    </select>
+    <update id="addReadedCount" parameterType="java.lang.Integer">
+        update notice set readedCount=readedCount+1 where noticeId=#{noticeId}
+    </update>
+    <insert id="addRemindClass" parameterType="top.zwzx.managersystem.pojo.RemindClass">
+        insert into remindClass(classId,createUser,classTime,createTime,text) value (#{classId},#{createUser},#{classTime},#{createTime},#{text})
+    </insert>
+    <select id="showTodayClass" resultType="top.zwzx.managersystem.pojo.RemindClass">
+    select c.className,c.classRoom,rc.classTime,rc.text from classselect cs,class c,remindClass rc where cs.classId=c.classId and rc.classId=cs.classId and studentId=#{studentId} and rc.classTime=#{classTime}
+    </select>
+    <select id="showTomorrowClass" resultType="top.zwzx.managersystem.pojo.RemindClass">
+    select c.className,c.classRoom,rc.classTime,rc.text from classselect cs,class c,remindClass rc where cs.classId=c.classId and rc.classId=cs.classId and studentId=#{studentId} and rc.classTime=#{classTime}
+    </select>
 </mapper>

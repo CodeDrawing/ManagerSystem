@@ -32,6 +32,9 @@
 					<div>
 						<a class="btn btn-sm btn-light"style="font-size: 2rem" onclick="advice()">家长意见反馈</a>
 					</div>
+					<div>
+						<a class="btn btn-sm btn-light"style="font-size: 2rem" onclick="notice()">发布公告</a>
+					</div>
 					<h2><a class="btn btn-sm btn-success" th:href="@{/class/add}">添加课程</a></h2>
 					<div class="table-responsive">
 						<table class="table table-striped table-sm">
@@ -57,6 +60,7 @@
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/class/toUpdateClass/}+${classList.getClassId()}">编辑</a>
 										<a class="btn btn-sm btn-danger"onclick="javascript:return drop();" th:href="@{/class/dropClass/}+${classList.getClassId()}">删除</a>
+										<a class="btn btn-sm btn-info" th:onclick="'remindClass('+${classList.getClassId()}+')'">提醒上课</a>
 									</td>
 								</tr>
 							</tbody>
@@ -97,6 +101,50 @@
 				area:['80%','80%'],
 				content:'/parents/showAllAdvice'
 			})
+		};
+		function notice(){
+			layer.open({
+				type:2,
+				title:'意见反馈',
+				shadeClose:true,
+				shade:0.8,
+				area:['60%','80%'],
+				content:'/parents/showNotice'
+			})
+		};
+		function remindClass(classId){
+			layer.prompt({title: '请输入上课日期（注意格式）yyyy-mm-dd', formType: 0}, function(classTime, index) {
+				layer.close(index);
+				layer.prompt({title: '请输入上课时间（如:下午3点半）', formType: 0}, function (text, index) {
+					layer.close(index);
+					$.ajax({
+						type: "post",
+						dataType: "json",
+						async: false,
+						//注意，这个localhost要和后台的域名一样，不让后台不能获取到session
+						url: "http://192.168.0.102/parents/remindClass",
+						// url:"http://nlfb.5gzvip.idcfengye.com/parents/remindClass",
+						data: {"classTime": classTime, "classId": classId,"text":text},
+						xhrFields: {
+							withCredentials: true
+						},
+						success: function (data) {
+							if (data.result == 200) {
+								layer.msg("提醒成功！", {icon: 1, time: 2000, shade: 0.4})
+							} else {
+								layer.msg("提醒失败！请重试", {icon: 1, time: 2000, shade: 0.4})
+							}
+						},
+						error: function (result) {
+							layer.msg("服务器错误，请稍后重试！", {icon: 2, time: 2000, shade: 0.4});
+						}
+
+					})
+					return false;
+				});
+			});
+
+
 		}
 	</script>
 

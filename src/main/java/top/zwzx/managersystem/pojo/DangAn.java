@@ -20,7 +20,6 @@ public class DangAn {
     private Integer classId;
     private String createTeacher;
     private String image;
-    private Integer ID;
     private Date dateTime;
     private String studentName;
     private Date admissionTime;

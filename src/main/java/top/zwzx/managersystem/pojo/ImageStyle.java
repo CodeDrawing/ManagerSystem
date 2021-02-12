@@ -3,22 +3,17 @@ package top.zwzx.managersystem.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.Date;
 
-/**
- * @Author zx
- * @Date 2020/10/15 17:03
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClassRecord {
+@ToString
+public class ImageStyle {
     private Integer studentId;
+    private String image;
     private Integer classRecordId;
-    private String text;
-    private Date date;
-    private Integer classId;
-    private String createTeacher;
-    private String className;
+    private Date dateTime;
 }

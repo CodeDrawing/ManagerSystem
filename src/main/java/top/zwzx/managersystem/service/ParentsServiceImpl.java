@@ -3,9 +3,7 @@ package top.zwzx.managersystem.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.zwzx.managersystem.mapper.ParentsMapper;
-import top.zwzx.managersystem.pojo.Advice;
-import top.zwzx.managersystem.pojo.Parents;
-import top.zwzx.managersystem.pojo.haveClass;
+import top.zwzx.managersystem.pojo.*;
 
 import java.util.List;
 
@@ -114,5 +112,49 @@ public class ParentsServiceImpl implements IParentsService{
     public List<Advice> showAdviceByParentsIdAlreadyFeedBack(Integer parentsId) {
         List<Advice> adviceList = parentsMapper.showAdviceByParentsIdAlreadyFeedBack(parentsId);
         return adviceList;
+    }
+
+    @Override
+    public List<Notice> showNotice() {
+        List<Notice> notices = parentsMapper.showNotice();
+        return notices;
+    }
+
+    @Override
+    public void addNotice(Notice notice) {
+        parentsMapper.addNotice(notice);
+    }
+
+    @Override
+    public void updateAllFirerIsFalse() {
+        parentsMapper.updateAllFirerIsFalse();
+    }
+
+    @Override
+    public Notice showFirstIsOn() {
+        Notice notice = parentsMapper.showFirstIsOn();
+        return notice;
+    }
+
+    @Override
+    public void addReadedCount(Integer noticeId) {
+        parentsMapper.addReadedCount(noticeId);
+    }
+
+    @Override
+    public void addRemindClass(RemindClass remindClass) {
+        parentsMapper.addRemindClass(remindClass);
+    }
+
+    @Override
+    public List<RemindClass> showTodayClass(RemindClass remindClass) {
+        List<RemindClass> remindClasses = parentsMapper.showTodayClass(remindClass);
+        return remindClasses;
+    }
+
+    @Override
+    public List<RemindClass> showTomorrowClass(RemindClass remindClass) {
+        List<RemindClass> remindClasses = parentsMapper.showTomorrowClass(remindClass);
+        return remindClasses;
     }
 }

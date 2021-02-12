@@ -22,6 +22,8 @@
     <dl class="layui-nav-child"> <!-- 二级菜单 -->
       <dd><a th:href="@{/school/myAccount}">修改信息</a></dd>
       <dd><a th:href="@{/school/myCourses}">我的课程</a></dd>
+      <dd><a href="#">今日课程:<span class="layui-badge">[[${todayClassCount}]]</span></a></dd>
+      <dd><a href="#">明日课程:<span class="layui-badge">[[${tomorrowClassCount}]]</span></a></dd>
       <dd><a th:href="@{/school/loginOut}">退出登陆</a></dd>
     </dl>
   </li>
@@ -31,6 +33,7 @@
     <dl class="layui-nav-child"> <!-- 二级菜单 -->
       <dd><a th:href="@{/school/classPerform}">上课记录</a></dd>
       <dd><a th:href="@{/school/adviceToTeacher}">给老师的建议</a></dd>
+      <dd><a th:href="@{/school/toAllClassImage}">课堂照片</a></dd>
     </dl>
   </li>
   <li class="layui-nav-item">
@@ -38,26 +41,93 @@
     <dl class="layui-nav-child"> <!-- 二级菜单 -->
       <dd><a th:href="@{/school/normal/index}">首页</a></dd>
       <dd><a th:href="@{/school/normal/courseIntroduce}">学校课程</a></dd>
+
     </dl>
   </li>
 
+
 </ul>
  <!-- 公告 -->
- <h2 class="layui-icon layui-icon-layer" style="font-size: 30px; color: red;margin-top: 35%;" align="center">公告</h2>
+ <h2 class="layui-icon layui-icon-layer" style="font-size: 30px; color: red;" align="center">公告</h2>
+<fieldset class="layui-elem-field">
+  <legend>[[${notice.getTitle()}]]</legend>
+  <div class="layui-field-box">
+    [[${notice.getContent()}]]
+  </div>
+  <legend><span style="font-size: smaller">浏览量：[[${notice.getReadedCount()}]]</span></legend>
+</fieldset>
+<div class="layui-collapse">
+  <div class="layui-colla-item">
+    <h2 class="layui-colla-title">今日课程</h2>
+    <div class="layui-colla-content layui-show">
 
- <!-- <div style="border: 1px blue solid;width: 300px;height:300px;margin: 10%; margin-top: 0%;"></div> -->
- <textarea name="" required lay-verify="required" placeholder="公告内容" class="layui-textarea">热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博热工给人看微博</textarea>
+      <ul class="layui-timeline" th:each="todayClass:${todayClass}">
 
+        <li class="layui-timeline-item">
+          <i class="layui-icon layui-timeline-axis"></i>
+          <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">[[${todayClass.getClassName()}]]</h3>
+            <p>
+              <b>上课时间</b>：[[${#dates.format(todayClass.getClassTime(),'yyyy-MM-dd')}]][[${todayClass.getText()}]]
+              <br><b>上课教室</b>：[[${todayClass.getClassRoom()}]]
+            </p>
+          </div>
+        </li>
+      </ul>
 
+    </div>
+  </div>
+  <div class="layui-colla-item">
+    <h2 class="layui-colla-title">明日课程</h2>
+    <div class="layui-colla-content layui-show">
+      <ul class="layui-timeline" th:each="tomorrowClass:${tomorrowClass}">
 
+        <li class="layui-timeline-item">
+          <i class="layui-icon layui-timeline-axis"></i>
+          <div class="layui-timeline-content layui-text">
+            <h3 class="layui-timeline-title">[[${tomorrowClass.getClassName()}]]</h3>
+            <p>
+              <b>上课时间</b>：[[${#dates.format(tomorrowClass.getClassTime(),'yyyy-MM-dd')}]][[${tomorrowClass.getText()}]]
+              <br><b>上课教室</b>：[[${tomorrowClass.getClassRoom()}]]
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 
+</div>
+
+<div id="loader-wrapper">
+  <div id="loader"></div>
+  <div class="loader-section section-left"></div>
+  <div class="loader-section section-right"></div>
+  <div class="load_title">加载中</div>
+</div>
 <script th:src="@{/js/jquery-1.11.3.min.js}"></script>
 <script th:src="@{/js/layui.js}"></script>
 <!--    <script th:src="@{/layui-v2.5.7/layui/layui.js}"></script>-->
 <script th:src="@{/layer-v3.2.0/layer/layer.js}"></script>
+<script>
+  $(window).load(function () {
+    $("body").addClass("loaded").Chameleon({
+      current_item: "hoveralls",
+      json_url: "../Envato/items.json",
+    });
+    $("#loader-wrapper .load_title").remove();
+  });
+</script>
 <script >
   layui.use(['element'],function(){
   })
  </script>
+<script>
+  //注意：折叠面板 依赖 element 模块，否则无法进行功能性操作
+  layui.use('element', function(){
+    var element = layui.element;
+
+    //…
+  });
+</script>
 </body>
 </html>

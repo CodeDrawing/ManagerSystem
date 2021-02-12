@@ -69,7 +69,7 @@
                         <td><p th:title="${classRecord.getText()}">查看</p></td>
                         <td>[[${classRecord.getCreateTeacher()}]]</td>
                         <td>
-                            <a class="btn btn-sm btn-primary" th:href="@{/dangAn/toUpdateClassRecord/}+${classRecord.getID()}">编辑</a>
+                            <a class="btn btn-sm btn-primary" th:href="@{/dangAn/toUpdateClassRecord/}+${classRecord.getClassRecordId()}">编辑</a>
                         </td>
                     </tr>
                     </tbody>

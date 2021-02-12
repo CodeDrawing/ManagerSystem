@@ -2,6 +2,9 @@ package top.zwzx.managersystem.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+import top.zwzx.managersystem.pojo.ClassRecord;
+import top.zwzx.managersystem.pojo.Image;
+import top.zwzx.managersystem.pojo.ImageStyle;
 import top.zwzx.managersystem.pojo.SchoolStyle;
 
 import java.util.List;
@@ -13,7 +16,10 @@ import java.util.List;
 @Mapper
 @Repository
 public interface SchoolStyleMapper {
-    public List<SchoolStyle> queryAllSchoolStyle();
-    public void addSchoolImage(SchoolStyle schoolStyle);
+    List<SchoolStyle> queryAllSchoolStyle();
+    void addSchoolImage(SchoolStyle schoolStyle);
     SchoolStyle showOneBigImage(Integer id);
+    List<ClassRecord> showAllClassRecord(Integer studentId);
+    List<Image> showImageByClassRecordId(Integer classRecordId);
+    List<ImageStyle> showAllClassImageByStudentId(Integer studentId);
 }
